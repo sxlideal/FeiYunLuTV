@@ -10,6 +10,8 @@ public class CsMideaProjectionObject {
     private MediaProjection mMediaProjection = null;
     private boolean mInit = false;
 
+
+
     public static CsMideaProjectionObject m8091a() {
         if (mCsMideaProjection == null) {
             mCsMideaProjection = new CsMideaProjectionObject();
@@ -22,7 +24,7 @@ public class CsMideaProjectionObject {
     }
 
     public void m8092a(Context context, Intent intent) {
-        this.mMediaProjection = ((MediaProjectionManager) context.getSystemService("media_projection")).getMediaProjection(-1, intent);
+        this.mMediaProjection = ((MediaProjectionManager) context.getSystemService(Context.MEDIA_PROJECTION_SERVICE)).getMediaProjection(-1, intent);
         this.mInit = true;
     }
 
