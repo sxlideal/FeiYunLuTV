@@ -4,7 +4,7 @@ package com.qike.feiyunlu.tv.presentation.model.login;
 import com.qike.feiyunlu.tv.module.network.BazaarGetDao;
 import com.qike.feiyunlu.tv.module.network.Paths;
 import com.qike.feiyunlu.tv.presentation.model.IAccountBizCallBack;
-import com.qike.feiyunlu.tv.presentation.model.User;
+import com.qike.feiyunlu.tv.presentation.model.dto.User;
 
 import tv.feiyunlu.qike.com.qikecorelibrary.libs.libs.base.datainterface.BaseLoadListener;
 import tv.feiyunlu.qike.com.qikecorelibrary.libs.libs.base.datainterface.IDao;

@@ -59,11 +59,7 @@
         </service>
 
         <activity android:name=".presentation.view.OnlineLiveSettingActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.view.screenrecord.MainActivity"
@@ -72,6 +68,16 @@
         <activity
             android:name=".presentation.view.screenrecord.FinishService"
             android:theme="@style/Theme.Transparent" >
+        </activity>
+
+        <activity android:name=".presentation.view.LoginActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
 
     </application>

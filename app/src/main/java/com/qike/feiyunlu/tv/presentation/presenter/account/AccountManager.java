@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 
-import com.qike.feiyunlu.tv.presentation.model.User;
+import com.qike.feiyunlu.tv.presentation.model.dto.User;
 import com.qike.feiyunlu.tv.presentation.presenter.IAccountPresenterCallBack;
 
 import java.util.List;

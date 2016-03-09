@@ -1,4 +1,4 @@
-package com.qike.feiyunlu.tv.presentation.model;
+package com.qike.feiyunlu.tv.presentation.model.dto;
 
 import com.j256.ormlite.field.DatabaseField;
 

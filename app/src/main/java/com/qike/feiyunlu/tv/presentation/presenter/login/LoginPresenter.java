@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.qike.feiyunlu.tv.presentation.model.IAccountBizCallBack;
-import com.qike.feiyunlu.tv.presentation.model.User;
+import com.qike.feiyunlu.tv.presentation.model.dto.User;
 import com.qike.feiyunlu.tv.presentation.model.login.LoginBiz;
 import com.qike.feiyunlu.tv.presentation.presenter.IAccountPresenterCallBack;
 import com.qike.feiyunlu.tv.presentation.presenter.account.AccountManager;

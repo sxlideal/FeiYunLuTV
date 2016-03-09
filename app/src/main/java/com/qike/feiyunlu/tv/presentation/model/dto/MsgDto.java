@@ -1,4 +1,4 @@
-package com.qike.feiyunlu.tv.presentation.model;
+package com.qike.feiyunlu.tv.presentation.model.dto;
 
 /**
  * Created by cherish on 2016/3/1.

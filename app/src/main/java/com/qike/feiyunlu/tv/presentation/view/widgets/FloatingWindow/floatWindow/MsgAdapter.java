@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.qike.feiyunlu.tv.R;
-import com.qike.feiyunlu.tv.presentation.model.MsgDto;
+import com.qike.feiyunlu.tv.presentation.model.dto.MsgDto;
 
 import java.util.ArrayList;
 import java.util.List;

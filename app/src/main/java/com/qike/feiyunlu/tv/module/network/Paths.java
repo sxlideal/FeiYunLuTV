@@ -11,7 +11,7 @@ public class Paths {
 
 	public static final String   BASEPATH = "http://api.feiyun.tv";
 
-	public static final String ACT="act";
+//	public static final String ACT="act";
 	public static final String KEY="key";
 	
 	public static final String ACT_RECOMMEND = "index";//推荐act
@@ -45,7 +45,7 @@ public class Paths {
 	public static final String PARAM_INTRO = "intro";
 	public static final String PARAM_EMAIL = "email";
 	public static final String PARAM_PHONE = "phone";
-	
+	public static final String PARAM_USER_VERIFY = "user_verify";
 	
 	public static final String THIRD_LOGIN = "/api/login/third_source";
 	
@@ -67,7 +67,11 @@ public class Paths {
 	
 	public static final String USER_EDIT_INTRO = "/api/user/edit_intro";
 	
-	
-	
+
+	public static final String ROOM_URL = "/live/api.php";
+	public static final String ROOM_ACT_GETINFO = "get_info";
+	public static final String ROOM_ACT_CLOSE = "close";
+	public static final String ROOM_ACT_OPEN = "open";
+	public static final String ACTION_PARAM = "action";
 	
 }

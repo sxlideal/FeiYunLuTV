@@ -3,6 +3,7 @@ package com.qike.feiyunlu.tv.library.util;
 import java.io.File;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.PixelFormat;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -27,6 +28,23 @@ public class DeviceUtils {
 		int[] wh = { dm.widthPixels, dm.heightPixels };
 		return wh;
 	}
+
+	public static int getScreenWidth( Activity context){
+		DisplayMetrics dm = new DisplayMetrics();
+		Display display = context.getWindowManager().getDefaultDisplay();
+		display.getMetrics(dm);
+		return dm.widthPixels;
+
+	}
+
+	public static int getScreenHeight( Activity context){
+		DisplayMetrics dm = new DisplayMetrics();
+		Display display = context.getWindowManager().getDefaultDisplay();
+		display.getMetrics(dm);
+		return dm.heightPixels;
+
+	}
+
 	/**
 	 * 
 	 *<p>获取位深</p><br/>

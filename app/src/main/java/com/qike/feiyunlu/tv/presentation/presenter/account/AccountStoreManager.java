@@ -5,7 +5,7 @@ import android.content.Context;
 import com.qike.feiyunlu.tv.module.database.QikeDatabaseProvider;
 
 import java.util.List;
-import com.qike.feiyunlu.tv.presentation.model.User;
+import com.qike.feiyunlu.tv.presentation.model.dto.User;
 
 /**
  * 
