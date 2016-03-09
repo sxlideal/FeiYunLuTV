@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemloadingView"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <RelativeLayout
+            android:id="@+id/itemloadinglayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@color/bg_gray" >
+
+            <LinearLayout
+                android:id="@+id/itemloading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:paddingBottom="8dip"
+                android:paddingTop="8dip"
+                android:visibility="visible" >
+
+                <ProgressBar
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:layout_marginRight="10dip"
+                    android:indeterminateDrawable="@drawable/loading_progressbar_style" >
+                </ProgressBar>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/mzw_pull_upload"
+                    android:textColor="#54584d"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/footer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_gray"
+                android:gravity="center"
+                android:text="@string/mzw_pull_finally"
+                android:textSize="15sp"
+                android:visibility="gone" >
+            </TextView>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/item_click"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/mzw_item_selector_tab2"
+            android:gravity="center"
+            android:text="@string/mzw_click_reopen_date"
+            android:textSize="15sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</RelativeLayout>

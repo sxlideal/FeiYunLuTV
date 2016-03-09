@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp" android:layout_height="400dp"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    
+    <RelativeLayout
+        android:id="@+id/float_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/chat_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chat"
+            style="@style/text_chat"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/chat_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_chat"
+            android:text="136人"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/spread"/>
+
+        <ImageView
+            android:id="@+id/spread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView
+        android:id="@+id/chat_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="#000000"
+        android:dividerHeight="0dp"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0.0dip"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:listSelector="#00000000"
+        android:scrollbarStyle="insideOverlay"
+        android:visibility="visible"
+        android:background="@color/transparent"
+        >
+    </com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView>
+
+
+</LinearLayout>

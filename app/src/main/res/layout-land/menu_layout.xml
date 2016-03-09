@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qike.feiyunlu.tv.presentation.view.widgets.MenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="12dp"
+    android:paddingLeft="15dp"
+    android:paddingBottom="20dp"
+    android:paddingRight="15dp"
+    android:background="#000000"
+    android:id="@+id/back_layout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        >
+
+        <ImageView
+            android:id="@+id/game_icon"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/game_icon"/>
+
+        <TextView
+            android:layout_toRightOf="@+id/game_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的世界"
+            style="@style/text_e5e5e5_15sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"/>
+
+
+
+        <RelativeLayout
+            android:id="@+id/currency_layout"
+            android:layout_width="42dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="42dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/currency_back"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="41"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_toLeftOf="@+id/currency_layout"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:background="@mipmap/privacy_true"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/privacy_mode"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="11sp"
+                android:layout_marginRight="5dp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="55dp"
+        android:layout_height="20dp"
+        android:background="@mipmap/pop_back"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="70dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/little_pop"
+            android:textSize="11dp"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/chat_people"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@mipmap/user_icon"/>
+            <TextView
+                android:id="@+id/chat_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                style="@style/text_fff_15sp"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/share_icon"
+            android:layout_toLeftOf="@+id/chat_people"
+            android:layout_marginRight="30dp"
+            android:padding="5dp"
+            />
+        <ImageView
+            android:id="@+id/chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/chat_icon"
+            android:layout_toLeftOf="@+id/share"
+            android:layout_marginRight="30dp"
+            android:padding="5dp"
+            />
+        <ImageView
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/edit_icon"
+            android:layout_toLeftOf="@+id/chat"
+            android:layout_marginRight="30dp"
+            android:padding="5dp"
+            />
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="0.5dp"
+            android:layout_height="20dp"
+            android:background="#fff"
+            android:layout_toLeftOf="@+id/edit"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_toLeftOf="@+id/line"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/triangle_up"
+                android:layout_gravity="center_vertical"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/triangle_down"
+                style="@style/text_fff_15sp"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</com.qike.feiyunlu.tv.presentation.view.widgets.MenuLayout>
