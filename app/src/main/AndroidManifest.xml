@@ -73,10 +73,7 @@
             android:name=".presentation.view.screenrecord.FinishService"
             android:theme="@style/Theme.Transparent" >
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
+
     </application>
 
 </manifest>

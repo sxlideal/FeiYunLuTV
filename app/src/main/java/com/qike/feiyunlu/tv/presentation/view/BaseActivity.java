@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 
-import com.qike.feiyunlu.tv.library.UiUtils;
+import com.qike.feiyunlu.tv.library.util.UiUtils;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,16 +1,19 @@
-package com.qike.feiyunlu.tv.library;
-
-import android.app.Activity;
-import android.app.NotificationManager;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.util.DisplayMetrics;
-import android.util.SparseArray;
-import android.view.WindowManager;
+package com.qike.feiyunlu.tv.library.util;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
+import android.util.DisplayMetrics;
+import android.util.SparseArray;
+import android.view.WindowManager;
 
 /**
  * UI相关工具类<br/>
@@ -104,7 +107,26 @@ public class UiUtils {
 //
 //	}
 
+	public static PackageInfo queryPackageInfo(PackageManager pm, String packageName) {
+		if (pm == null || CommonUtil.isEmpty(packageName)) {
+			return null;
+		}
+		PackageInfo packageInfo = null;
+		try {
+			packageInfo = pm.getPackageInfo(packageName, 0);
+		} catch (NameNotFoundException e) {
+			return null;
+		}
+		return packageInfo;
+	}
 
+	public static String queryAppName(PackageManager pm, String packageName) {
+		PackageInfo packageInfo = queryPackageInfo(pm, packageName);
+		if (packageInfo == null) {
+			return null;
+		}
+		return packageInfo.applicationInfo.loadLabel(pm).toString();
+	}
 
 	/**
 	 * 将activity加入集合<br/>
@@ -238,7 +260,7 @@ public class UiUtils {
 	 * 清除通知栏
 	 * @since 5.0.0
 	 * @author sunxianhao
-	 * @param
+	 * @param activity
 	 */
 	public static void delenot(Activity acticity) {
 		NotificationManager notificationManager = (NotificationManager) acticity.getSystemService(Context.NOTIFICATION_SERVICE);
