@@ -117,4 +117,7 @@
     <string name="portrait_str">竖屏直播</string>
     <string name="super_density">超清</string>
     <string name="online_live">正在直播</string>
+    <string name="room_id">房间号：</string>
+
+
 </resources>

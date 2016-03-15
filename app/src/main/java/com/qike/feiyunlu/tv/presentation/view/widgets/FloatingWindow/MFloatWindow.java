@@ -63,6 +63,20 @@ public abstract class MFloatWindow implements FloatWindow {
     }
 
 
+    public void setInVisible(){
+
+        layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        mWM.updateViewLayout(mContainerView,layoutParams);
+
+    }
+
+    public void setVisible(){
+
+        layoutParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        mWM.updateViewLayout(mContainerView,layoutParams);
+    }
+
+
     @Override
     public void show() {
         if (!isShowing) {

@@ -49,7 +49,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".presentation.view.MainActivity"
+            android:name=".presentation.view.MenuActivity"
             android:screenOrientation="landscape" >
         </activity>
         <activity android:name=".WindowActivity" >
@@ -58,8 +58,9 @@
         <service android:name=".presentation.presenter.Service.FloatService" >
         </service>
 
-        <activity android:name=".presentation.view.OnlineLiveSettingActivity" >
-
+        <activity
+            android:name=".presentation.view.OnlineLiveSettingActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".presentation.view.screenrecord.MainActivity"
@@ -69,17 +70,17 @@
             android:name=".presentation.view.screenrecord.FinishService"
             android:theme="@style/Theme.Transparent" >
         </activity>
-
-        <activity android:name=".presentation.view.LoginActivity">
-
+        <activity
+            android:name=".presentation.view.LoginActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
+        <activity android:name=".presentation.view.MessActivity" >
+        </activity>
     </application>
 
 </manifest>

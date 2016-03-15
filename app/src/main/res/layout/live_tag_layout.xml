@@ -51,9 +51,29 @@
             android:imeOptions="actionDone" />
     </RelativeLayout>
 
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ChuShouEditStyle"
+        android:padding="10dp"
+        android:text="天天跑酷"/>
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ChuShouEditStyle"
+        android:padding="10dp"
+        android:text="穿越火线"/>
+
+
+
+
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:visibility="gone">
 
         <ScrollView
             android:id="@+id/tag_list"

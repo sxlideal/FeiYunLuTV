@@ -32,6 +32,18 @@ public class FloatManager {
     }
 
 
+    public void setInVisible(){
+        mIconWindow.setInVisible();
+//        mMenuWindow.setInVisible();
+        mMsgWindow.setInVisible();
+    }
+
+    public void setVisible(){
+        mIconWindow.setVisible();
+        mMsgWindow.setVisible();
+    }
+
+
     private FloatManager(Context context){
 
         mIconWindow = new IconFloatWindow(context);
@@ -61,6 +73,11 @@ public class FloatManager {
     public void closeMsgWindow(){
         mMsgWindow.close();
     }
+
+    public boolean isOpen( ){
+        return mMsgWindow.isShowing();
+    }
+
 
     public void closeAllWindows(){
         mMsgWindow.close();

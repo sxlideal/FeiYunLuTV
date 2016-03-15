@@ -38,7 +38,7 @@ public class PopupWinManager {
 	public void showButtonUpPopupWin(View v, OnDismissListener onDismissListener, OnClickListener onClickListener) {
 
 
-		View contentView = mInflater.inflate(R.layout.pop_button, null);
+		View contentView = mInflater.inflate(R.layout.layout_arrow_down, null);
 		
 		ImageView imageUp = (ImageView) contentView.findViewById(R.id.button_up);
 

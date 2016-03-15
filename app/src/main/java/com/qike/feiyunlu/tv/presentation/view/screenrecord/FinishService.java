@@ -43,38 +43,7 @@ public class FinishService extends Activity {
         }catch (Exception e) {
 
         }
-//        try {
-//        Log.i("FinishService", " chh stop ScreenRecorderService now");
-//        intent = new Intent(FinishService.this, ScreenRecorderService.class);
-//        stopService(intent);
-//        }catch (Exception e) {
-//
-//        }
-//        while(true){
-//            boolean running = false;
-//            ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-//            for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-//                if ("gamelive.floating.service.FloatingService".equals(service.service.getClassName())) {
-//                    running = true;
-//                }
-//            }
-//            if ( ! running) {
-//                Log.i("FinishService"," chh stoped FloatingService now");
-//                break;
-//            } else {
-//                Log.i("FinishService"," chh  FloatingService running now");
-//            }
-//            try {
-//                Thread.sleep(50);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
 
-
-//        Log.i("FinishService"," chh stop GameliveMainService now");
-//        intent = new Intent(FinishService.this, GameliveMainService.class);
-//        stopService(intent);
         try {
             MainActivity.myfinish();
         }catch (Exception e) {

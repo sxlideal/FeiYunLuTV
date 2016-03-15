@@ -260,6 +260,8 @@ public class ScreenRecorder extends Thread {
             muxerInput.put(encodedData);
             muxerInput.position(0);
 
+
+            //注掉此if else语句，就不发送视频了，依然发送声音
             if ((mBufferInfo.flags & MediaCodec.BUFFER_FLAG_SYNC_FRAME) != 0) {
                 packageH264Keyframe(muxerInput, mBufferInfo);
                 mSender.writeAVPacketFromEncodedData(mH264Keyframe, 1, mBufferInfo.offset, mBufferInfo.size + mH264MetaSize, mBufferInfo.flags, mBufferInfo.presentationTimeUs - mFirstPts);

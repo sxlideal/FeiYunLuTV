@@ -35,7 +35,7 @@ public class LoginBiz {
 	public void login(String username, String pwd, final IAccountBizCallBack loginBizCallBack) {
 		
 		mDao = new BazaarGetDao<User>(Paths.BASEPATH + Paths.LOGIN_MOBILE, User.class, BazaarGetDao.ARRAY_DATA_CHUNK);
-		mDao.setNoCache();
+
 		mDao.registerListener(new BaseLoadListener() {
 
 			@Override
@@ -63,6 +63,7 @@ public class LoginBiz {
 
 		mDao.putParams(Paths.PARAM_ACCOUNT, username);
 		mDao.putParams(Paths.PARAM_PWD, pwd);
+		mDao.setNoCache();
 		mDao.asyncDoAPI();
 	}
 

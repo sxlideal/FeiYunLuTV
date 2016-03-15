@@ -217,7 +217,10 @@ public class BazaarGetDao<T> extends AbstractGetDao {
 	public T getData() {
 		return mData.getData();
 	}
-	
+
+	public DLResultData<T> getmData(){
+		return mData;
+	}
 	
 	public DLResultData<String> getErrorData(){
 		return mErrorData;

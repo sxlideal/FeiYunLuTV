@@ -1,8 +1,8 @@
 package com.qike.feiyunlu.tv.presentation.view;
 
 
+
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -16,7 +16,7 @@ import com.qike.feiyunlu.tv.presentation.presenter.IAccountPresenterCallBack;
 import com.qike.feiyunlu.tv.presentation.presenter.account.AccountManager;
 
 
-public class LoginActivity extends AppCompatActivity  implements IViewOperater{
+public class LoginActivity extends BaseActivity implements IViewOperater{
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -25,6 +25,9 @@ public class LoginActivity extends AppCompatActivity  implements IViewOperater{
     private View mLoginFormView;
 
     private Button mLoginButton;
+
+    private User mUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,5 +96,17 @@ public class LoginActivity extends AppCompatActivity  implements IViewOperater{
         }
     };
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mUser = AccountManager.getInstance(LoginActivity.this).getUser();
+        if (mUser!= null){
+            ActivityUtil.startOnLineLiveSettingActivity(LoginActivity.this);
+            finish();
+
+        }
+
+    }
 }
 

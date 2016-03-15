@@ -7,7 +7,10 @@
     android:paddingRight="15dp"
     android:paddingBottom="20dp"
     android:background="@android:color/black">
-
+    <RelativeLayout
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:background="@drawable/back_border">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -16,7 +19,7 @@
             android:layout_centerInParent="true"
             />
 
-
+    </RelativeLayout>
 
 
 
