@@ -85,6 +85,9 @@
     <color name="round_corner_bkg_color">#ff626262</color>
 
     <color name="density_btn_p">#a0ffffff</color>
+    <color name="line_title">#404454</color>
+    <color name="app_backcolor">#2c2f3e</color>
+    <color name="announce_backcolor">#343745</color>
 
     <string name="input_live_uri">please input uri</string>
     <string name="input_live_title">输入直播标题</string>
@@ -120,4 +123,10 @@
     <string name="room_id">房间号：</string>
 
 
+    <string name="save_announce">保存</string>
+    <string name="version">版本号：V</string>
+    <string name="save_success">保存成功</string>
+    <string name="live_announce">直播公告</string>
+    <string name="feiyun_assistant">飞云直播小助手</string>
+    <string name="details">详情</string>
 </resources>

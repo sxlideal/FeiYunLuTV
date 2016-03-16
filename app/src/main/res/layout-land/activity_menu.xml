@@ -26,11 +26,11 @@
 
     </com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView>
 
-    <include layout="@layout/layout_stop"
-        android:id="@+id/stop"
-        ></include>
     <include layout="@layout/layout_arrow_down"
-        android:id="@+id/arrow_down"></include>
+        ></include>
+    <include layout="@layout/layout_stop"
+        ></include>
+
 
 
 </RelativeLayout>

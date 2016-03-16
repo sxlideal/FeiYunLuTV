@@ -81,6 +81,10 @@
         </activity>
         <activity android:name=".presentation.view.MessActivity" >
         </activity>
+        <activity android:name=".presentation.view.AnnounceActivity" >
+        </activity>
+        <activity android:name=".presentation.view.MessageActivity" >
+        </activity>
     </application>
 
 </manifest>

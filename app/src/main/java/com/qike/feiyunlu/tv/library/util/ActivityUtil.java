@@ -3,6 +3,7 @@ package com.qike.feiyunlu.tv.library.util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.qike.feiyunlu.tv.presentation.view.AnnounceActivity;
 import com.qike.feiyunlu.tv.presentation.view.MenuActivity;
 import com.qike.feiyunlu.tv.presentation.view.OnlineLiveSettingActivity;
 
@@ -33,5 +34,8 @@ public class ActivityUtil {
 		context.startActivity(new Intent(context, MenuActivity.class));
 	}
 
+	public static void startAnnounceActivity( Context context){
+		context.startActivity(new Intent(context, AnnounceActivity.class));
+	}
 
 }

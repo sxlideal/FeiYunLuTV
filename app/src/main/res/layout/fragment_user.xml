@@ -3,31 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="48.0dip">
-
-        <ImageButton
-            android:id="@+id/back_btn"
-            android:layout_width="48.0dip"
-            android:layout_height="fill_parent"
-            android:background="@drawable/title_back_btn" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="触手直播"
-            android:textColor="@android:color/darker_gray" />
-
-        <ImageButton
-            android:id="@+id/anchor"
-            android:layout_width="48.0dip"
-            android:layout_height="fill_parent"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/title_back_btn"
-            android:visibility="gone" />
-    </RelativeLayout>
+<include layout="@layout/titlebar"></include>
 
 
     <LinearLayout

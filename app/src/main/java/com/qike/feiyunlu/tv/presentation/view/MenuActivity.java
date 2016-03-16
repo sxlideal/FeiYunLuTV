@@ -3,9 +3,11 @@ package com.qike.feiyunlu.tv.presentation.view;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.qike.feiyunlu.tv.R;
 import com.qike.feiyunlu.tv.presentation.view.inter.IActivityOperate;
@@ -19,9 +21,13 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
 
     private RelativeLayout backLayout;
     private LinearLayout mStopLayout;
-    private LinearLayout mArrowLayout;
+    private RelativeLayout mArrowLayout;
     private LinearLayout mUpDownLayout;
 
+    private ImageView mArrowImage;
+
+    private ImageButton mStopBtn;
+    private ImageButton mBackBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,33 +46,17 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
 //        FloatManager.getINSTANCE(MenuActivity.this).setInVisible();
 
         backLayout = (RelativeLayout)findViewById(R.id.back_layout);
-
-        mStopLayout = (LinearLayout)findViewById(R.id.stop);
-
         mUpDownLayout = (LinearLayout)findViewById(R.id.up_down);
 
+        mStopLayout = (LinearLayout)findViewById(R.id.stop);
+        mStopLayout.setVisibility(View.GONE);
+        mArrowLayout = (RelativeLayout)findViewById(R.id.arrow_down);
+        mArrowLayout.setVisibility(View.GONE);
 
+        mArrowImage = (ImageView)findViewById(R.id.button_up);
 
-        backLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.e("test", "onclick");
-                ControllerAnimation.showControllerUpAnimation(mStopLayout);
-                Toast.makeText(getContext(),"click",0).show();
-
-            }
-        });
-
-        mUpDownLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.e("test", "updown onclick");
-                Toast.makeText(getContext(),"click",0).show();
-            }
-        });
-
-
+        mStopBtn = (ImageButton)findViewById(R.id.stopbtn);
+        mBackBtn = (ImageButton)findViewById(R.id.imgback_btn);
 
     }
 
@@ -77,6 +67,90 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
 
     @Override
     public void setListener() {
+
+        backLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.e("test", "onclick");
+
+                if(mArrowLayout.getVisibility() == View.GONE ){
+                    mArrowLayout.setVisibility(View.VISIBLE);
+                    ControllerAnimation.showControllerUpAnimation(mArrowLayout, new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+//                            mArrowLayout.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                }else  if(mArrowLayout.getVisibility() == View.VISIBLE ){
+                    ControllerAnimation.hideControllerUpAnimation(mArrowLayout, new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            mArrowLayout.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                }
+
+
+            }
+        });
+
+
+        mArrowImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mStopLayout.setVisibility(View.VISIBLE);
+
+                ControllerAnimation.showControllerUpAnimation(mStopLayout, new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        mArrowLayout.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+            }
+        });
+
+
+
+        mStopBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
 
     }
 

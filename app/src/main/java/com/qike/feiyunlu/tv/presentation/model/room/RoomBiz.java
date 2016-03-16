@@ -138,9 +138,16 @@ public class RoomBiz {
 
         roomSettingDto.putParams("room_user_id", userid);
         roomSettingDto.putParams("user_verify",verifycode);
-        roomSettingDto.putParams("name",roomName);
-        roomSettingDto.putParams("game_name",gameName);
-        roomSettingDto.putParams("intro",intro);
+        if( roomName != null && !roomName.equals("")){
+            roomSettingDto.putParams("name",roomName);
+        }
+        if( gameName != null && !gameName.equals("")) {
+            roomSettingDto.putParams("game_name",gameName);
+        }
+        if( intro != null && !intro.equals("")) {
+            roomSettingDto.putParams("intro",intro);
+        }
+
         roomSettingDto.registerListener(new BaseLoadListener() {
 
             @Override
@@ -159,7 +166,7 @@ public class RoomBiz {
                 }
             }
         });
-
+        roomSettingDto.asyncDoAPI();
     }
 
 

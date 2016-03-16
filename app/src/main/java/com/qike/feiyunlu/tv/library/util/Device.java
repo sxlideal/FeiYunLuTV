@@ -32,7 +32,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-
+import com.qike.feiyunlu.tv.R;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -205,6 +205,22 @@ public class Device {
 
 		return imei == null || "".equals(imei) ? "isFake" : imei;
 	}
+
+	/**
+	 2  * 获取版本号
+	 3  * @return 当前应用的版本号
+	 4  */
+	public static String getVersion( Context context) {
+		    try {
+			      PackageManager manager = context.getPackageManager();
+			      PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
+		     String version = info.versionName;
+			      return context.getString(R.string.version) + version;
+		    } catch (Exception e) {
+			       e.printStackTrace();
+			       return "";
+			    }
+		 }
 
 	/**
 	 * 

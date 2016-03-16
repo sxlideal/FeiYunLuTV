@@ -62,7 +62,7 @@ public class MenuLayout extends RelativeLayout {
             public void onClick(View v) {
 
                 Log.e("test", "onclick");
-                ControllerAnimation.showControllerUpAnimation(mStopLayout);
+                ControllerAnimation.showControllerUpAnimation(mStopLayout,null);
                 Toast.makeText(getContext(),"click",0).show();
 
             }
