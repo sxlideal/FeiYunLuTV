@@ -3,18 +3,98 @@ package com.qike.feiyunlu.tv.presentation.view.widgets;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 
 public class ControllerAnimation {
 
 
+	private LinearLayout mStopLayout;
+	private RelativeLayout mArrowLayout;
 
+
+	public ControllerAnimation(LinearLayout stopLayout,  RelativeLayout arrowLayout ){
+
+		mStopLayout = stopLayout;
+		mArrowLayout = arrowLayout;
+	}
+
+
+
+	public void clickArrowView(){
+		mStopLayout.setVisibility(View.VISIBLE);
+		mArrowLayout.setVisibility(View.GONE);
+		ControllerAnimation.showControllerUpAnimation(mStopLayout, new Animation.AnimationListener() {
+			@Override
+			public void onAnimationStart(Animation animation) {
+
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				mArrowLayout.setVisibility(View.GONE);
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+
+			}
+		});
+	}
+
+	public void clickHideShowView(){
+
+		if( mArrowLayout.getVisibility() == View.GONE && mStopLayout.getVisibility()==View.VISIBLE){
+			ControllerAnimation.hideControllerUpAnimation(mStopLayout, new Animation.AnimationListener() {
+				@Override
+				public void onAnimationStart(Animation animation) {
+
+				}
+
+				@Override
+				public void onAnimationEnd(Animation animation) {
+					mStopLayout.setVisibility(View.GONE);
+				}
+
+				@Override
+				public void onAnimationRepeat(Animation animation) {
+
+				}
+			});
+
+
+		}else if(mArrowLayout.getVisibility() == View.GONE ){
+			mArrowLayout.setVisibility(View.VISIBLE);
+			ControllerAnimation.showControllerUpAnimation(mArrowLayout, null);
+		}else  if(mArrowLayout.getVisibility() == View.VISIBLE ){
+			ControllerAnimation.hideControllerUpAnimation(mArrowLayout, new Animation.AnimationListener() {
+				@Override
+				public void onAnimationStart(Animation animation) {
+
+				}
+
+				@Override
+				public void onAnimationEnd(Animation animation) {
+					mArrowLayout.setVisibility(View.GONE);
+				}
+
+				@Override
+				public void onAnimationRepeat(Animation animation) {
+
+				}
+			});
+		}
+
+
+
+	}
 
 
 	/*
 	 * 显示下面的控制栏动画	
 	 */
-		public static void showControllerDownAnimation(View view){
+		public void showControllerDownAnimation(View view){
 			
 			TranslateAnimation ta=new TranslateAnimation
 					(android.view.animation.Animation.RELATIVE_TO_SELF
@@ -33,7 +113,7 @@ public class ControllerAnimation {
 		/*
 		 * 隐藏下面的控制栏动画	
 		 */
-		public static void hideControllerDownAnimation(View view){
+		public void hideControllerDownAnimation(View view){
 			
 			TranslateAnimation ta=new TranslateAnimation
 					(android.view.animation.Animation.RELATIVE_TO_PARENT

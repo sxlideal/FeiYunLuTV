@@ -1,29 +1,27 @@
 package com.qike.feiyunlu.tv.presentation.view.fragment.livefragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Point;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qike.feiyunlu.tv.R;
 import com.qike.feiyunlu.tv.library.util.ActivityUtil;
 import com.qike.feiyunlu.tv.module.network.DLResultData;
 import com.qike.feiyunlu.tv.presentation.model.dto.User;
 import com.qike.feiyunlu.tv.presentation.presenter.BaseCallbackPresenter;
-import com.qike.feiyunlu.tv.presentation.presenter.Service.FloatService;
 import com.qike.feiyunlu.tv.presentation.presenter.account.AccountManager;
 import com.qike.feiyunlu.tv.presentation.presenter.room.RoomPresenter;
 import com.qike.feiyunlu.tv.presentation.view.OnlineLiveSettingActivity;
 import com.qike.feiyunlu.tv.presentation.view.fragment.BaseFragment;
 import com.qike.feiyunlu.tv.presentation.view.screenrecord.LiveScreenDto;
+import com.qike.feiyunlu.tv.presentation.view.screenrecord.LiveUtil;
 
 /**
  * Created by cherish on 2016/3/15.
@@ -43,6 +41,7 @@ public class LiveFragment extends BaseFragment {
 
     private User mUser;
 
+    private EditText mLiveTitleEdit;
 
     @Override
     public void initView() {
@@ -55,6 +54,7 @@ public class LiveFragment extends BaseFragment {
         mTagText = (TextView) findViewById(R.id.live_tag_tv);
 
         mTagLayout = (RelativeLayout) findViewById(R.id.select_live_tag);
+        mLiveTitleEdit = (EditText)findViewById(R.id.live_title_edit);
 
         initActivityView();
 
@@ -81,7 +81,7 @@ public class LiveFragment extends BaseFragment {
         });
     }
 
-    public void initActivityView(){
+    public void initActivityView() {
         initDrawerLayout();
         mDrawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawerlayout);
     }
@@ -110,7 +110,38 @@ public class LiveFragment extends BaseFragment {
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startRecord(1);
+//                LiveUtil.startRecord(1,getContext(),mLiveDto);
+
+
+                String roomName = mLiveTitleEdit.getText().toString();
+                String gameName = mTagText.getText().toString();
+                if ( roomName == null || roomName.equals("")){
+                    Toast.makeText(getContext(), R.string.live_title, 0).show();
+                    return;
+                }
+                if (gameName == null || gameName.equals("")){
+                    Toast.makeText(getContext(),R.string.live_tag,0).show();
+                    return;
+                }
+
+                mRoomPresenter.setRoomSetting(getActivity(),mUser.getUser_id(), mUser.getUser_verify(),roomName
+                        ,gameName ,
+                        new BaseCallbackPresenter() {
+                    @Override
+                    public boolean callbackResult(Object obj) {
+
+                        Toast.makeText(getContext(),"保存成功",0).show();
+
+                        return false;
+                    }
+
+                    @Override
+                    public void onErrer(int code, String msg) {
+                        Toast.makeText(getContext(),"保存失败",0).show();
+
+                    }
+                });
+
                 ActivityUtil.startMenuActivity(getContext());
             }
 
@@ -119,63 +150,14 @@ public class LiveFragment extends BaseFragment {
         orientRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (checkedId == R.id.horizontal_btn) {//横屏
-                    mLiveDto.setOrientation(0);
-                    if( mLiveDto.getHeight() > mLiveDto.getWidth()){
-                        swap();
-                    }
-
-                } else if (checkedId == R.id.portrait_btn) {//竖屏
-                    mLiveDto.setOrientation(1);
-                    if( mLiveDto.getHeight() < mLiveDto.getWidth()){
-                        swap();
-                    }
-                }
-
+                LiveUtil.chooseOrientation(checkedId,mLiveDto);
             }
         });
 
         sharpRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.normal_density:
-
-                        mLiveDto.setBitrate(500000);
-                        break;
-
-                    case R.id.high_density:
-                        mLiveDto.setBitrate(1000000);
-                        break;
-
-                    case R.id.super_density:
-                        mLiveDto.setBitrate(2000000);
-
-                        break;
-                }
-                /****************************************/
-                WindowManager windowManager = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
-                Point point = new Point();
-                windowManager.getDefaultDisplay().getRealSize(point);
-                float f = ((float) point.y) / ((float) point.x);
-
-                if (mLiveDto.getBitrate() == 1000000) {
-                    mLiveDto.setHeight(480);
-                } else if (mLiveDto.getBitrate() == 2000000) {
-                    mLiveDto.setHeight(720);
-                } else if (mLiveDto.getBitrate() == 500000) {
-                    mLiveDto.setHeight(360);
-                }
-                int width = (int) (f * ((float) mLiveDto.getHeight()));
-                if (width % 4 != 0) {
-                    width -= width % 4;
-                }
-                mLiveDto.setWidth(width);
-
-                if( mLiveDto.getOrientation() == 1 && mLiveDto.getWidth()>mLiveDto.getHeight()){
-                    swap();
-                }
+                mLiveDto = LiveUtil.chooseSharpness(checkedId, mLiveDto, getContext());
 
             }
         });
@@ -185,17 +167,10 @@ public class LiveFragment extends BaseFragment {
 
     }
 
-
-    private void swap(){
-        int temp = mLiveDto.getHeight();
-        mLiveDto.setHeight(mLiveDto.getWidth());
-        mLiveDto.setWidth(temp);
-    }
-
     @Override
     public void loadData() {
         mUser = AccountManager.getInstance(getContext()).getUser();
-        if( mUser != null){
+        if (mUser != null) {
 
             mRoomPresenter.getRoomUrl(mUser.getUser_id(), mUser.getUser_verify(), new BaseCallbackPresenter() {
                 @Override
@@ -223,13 +198,6 @@ public class LiveFragment extends BaseFragment {
 
 
 
-    private void startRecord(int i) {
-
-        Intent intent = new Intent(getContext(), FloatService.class);
-        intent.putExtra("liveDto", mLiveDto);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        getActivity().startService(intent);
-    }
 
 
     @Override

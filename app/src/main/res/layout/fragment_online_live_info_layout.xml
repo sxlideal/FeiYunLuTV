@@ -129,6 +129,7 @@
                 android:gravity="center|left"
                 android:hint="@string/input_live_title"
                 android:inputType="text"
+                android:text="标题"
                 android:paddingLeft="15.0dip" />
 
             <RelativeLayout
@@ -158,6 +159,7 @@
                     android:src="@drawable/open_tag_n" />
 
                 <TextView
+                    style="@style/ChuShouEditStyle"
                     android:id="@+id/live_tag_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -169,7 +171,8 @@
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:singleLine="true"
-                    android:text="@string/select_live_tag"
+                    android:hint="@string/select_live_tag"
+                    android:text="标签"
                     android:textColor="@color/edit_hint_txt_color"
                     android:textSize="12.0sp" />
             </RelativeLayout>

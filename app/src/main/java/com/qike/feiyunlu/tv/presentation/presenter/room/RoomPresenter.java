@@ -1,10 +1,14 @@
 package com.qike.feiyunlu.tv.presentation.presenter.room;
 
+import android.content.Context;
+
+import com.qike.feiyunlu.tv.library.util.PreferencesUtils;
 import com.qike.feiyunlu.tv.module.network.DLResultData;
 import com.qike.feiyunlu.tv.presentation.model.BaseCallbackBiz;
 import com.qike.feiyunlu.tv.presentation.model.dto.RoomDto;
 import com.qike.feiyunlu.tv.presentation.model.room.RoomBiz;
 import com.qike.feiyunlu.tv.presentation.presenter.BaseCallbackPresenter;
+import com.qike.feiyunlu.tv.presentation.view.AnnounceActivity;
 
 /**
  * Created by cherish on 2016/3/14.
@@ -76,6 +80,7 @@ public class RoomPresenter {
                 }
                 return false;
             }
+
             @Override
             public void onErrer(int code, String msg) {
                 callbackPresenter.onErrer(code, msg);
@@ -85,8 +90,11 @@ public class RoomPresenter {
     }
 
 
-    public void setRoomSetting( String userid,String verifycode,String roomName, String gameName,String intro ,final BaseCallbackPresenter callback){
+    public void setRoomSetting(Context context, String userid,String verifycode,String roomName, String gameName,final BaseCallbackPresenter callback){
 
+
+
+        String intro = PreferencesUtils.loadPrefString(context, AnnounceActivity.ANNOUNCE,"");
         mBiz.setRoomSetting(userid, verifycode, roomName, gameName, intro, new BaseCallbackBiz() {
             @Override
             public void dataResult(Object obj) {
@@ -98,6 +106,23 @@ public class RoomPresenter {
                 callback.onErrer(code, msg);
             }
         });
+
+    }
+
+    public void setRoomIntro( String userid,String verifycode,String roomName, String gameName,String intro ,final BaseCallbackPresenter callback){
+
+
+            mBiz.setRoomSetting(userid, verifycode, roomName, gameName, intro, new BaseCallbackBiz() {
+                @Override
+                public void dataResult(Object obj) {
+                    callback.callbackResult(obj);
+                }
+
+                @Override
+                public void errerResult(int code, String msg) {
+                    callback.onErrer(code, msg);
+                }
+            });
 
     }
 

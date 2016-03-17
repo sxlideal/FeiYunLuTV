@@ -63,28 +63,35 @@ public class AnnounceActivity extends BaseActivity implements IViewOperater{
 
     @Override
     public void setListener() {
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 mAnnounce = mAnnounceEdit.getText().toString();
-
-                roomPresenter.setRoomSetting(mUser.getUser_id(), mUser.getUser_verify(), "", "", mAnnounce, new BaseCallbackPresenter() {
-                    @Override
-                    public boolean callbackResult(Object obj) {
-
-                        Toast.makeText(getContext(),R.string.save_success,0 ).show();
-                        PreferencesUtils.savePrefString(getContext(), ANNOUNCE, mAnnounce);
-                        finish();
-                        return false;
-                    }
-
-                    @Override
-                    public void onErrer(int code, String msg) {
-
-                    }
-                });
-
+                Toast.makeText(getContext(),R.string.save_success,0 ).show();
+                PreferencesUtils.savePrefString(getContext(), ANNOUNCE, mAnnounce);
+                finish();
+//                roomPresenter.setRoomIntro(mUser.getUser_id(), mUser.getUser_verify(), "", "", mAnnounce, new BaseCallbackPresenter() {
+//                    @Override
+//                    public boolean callbackResult(Object obj) {
+//
+//
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public void onErrer(int code, String msg) {
+//
+//                    }
+//                });
 
             }
         });

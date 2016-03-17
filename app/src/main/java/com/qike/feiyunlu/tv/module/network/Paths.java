@@ -36,7 +36,7 @@ public class Paths {
 
 	public static final String CHANGE_ROOM = "/api/room/change_info";
 
-
+	public static final String SYSTEM_INFO = "/api/message/get_sys_msg_list";
 
 	
 }

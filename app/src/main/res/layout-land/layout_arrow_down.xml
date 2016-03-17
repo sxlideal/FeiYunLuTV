@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:background="@mipmap/pop_shadow_back"
-    android:visibility="visible"
-    android:id="@+id/arrow_down">
 
-    <ImageView
+    >
 
-        android:layout_marginTop="3dp"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button_up"
-        android:src="@mipmap/button_up"
-        android:layout_centerHorizontal="true"/>
+        android:background="@mipmap/pop_shadow_back"
+        android:id="@+id/arrow_down"
+        android:visibility="gone">
+        <ImageView
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_up"
+            android:src="@mipmap/button_up"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+
 
 
 </RelativeLayout>

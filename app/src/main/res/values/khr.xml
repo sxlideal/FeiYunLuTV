@@ -52,6 +52,20 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+    <style name="MyDialog2" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"></attr>
+        <attr name="border_color" format="color"></attr>
+    </declare-styleable>
+
 
 
     <color name="transparent">#00000000</color>
@@ -88,6 +102,7 @@
     <color name="line_title">#404454</color>
     <color name="app_backcolor">#2c2f3e</color>
     <color name="announce_backcolor">#343745</color>
+    <color name="app_linear">#d0d0d0</color>
 
     <string name="input_live_uri">please input uri</string>
     <string name="input_live_title">输入直播标题</string>
@@ -129,4 +144,11 @@
     <string name="live_announce">直播公告</string>
     <string name="feiyun_assistant">飞云直播小助手</string>
     <string name="details">详情</string>
+    <string name="system_message">系统消息</string>
+    <string name="live_title">请填写直播标题</string>
+    <string name="live_tag">请选择直播标签</string>
+    <string name="prompt">提示</string>
+    <string name="confirm_exit">确定退出登录</string>
+    <string name="exit">退出</string>
+    <string name="cancle">取消</string>
 </resources>

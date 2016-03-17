@@ -8,24 +8,6 @@
 
 
 
-    <com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView
-        android:id="@+id/chat_menu_listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:cacheColorHint="@android:color/transparent"
-        android:divider="#000000"
-        android:dividerHeight="0dp"
-        android:fadingEdge="none"
-        android:fadingEdgeLength="0.0dip"
-        android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false"
-        android:listSelector="#00000000"
-        android:scrollbarStyle="insideOverlay"
-        android:visibility="gone"
-        android:background="@color/transparent">
-
-    </com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView>
-
     <include layout="@layout/layout_arrow_down"
         ></include>
     <include layout="@layout/layout_stop"

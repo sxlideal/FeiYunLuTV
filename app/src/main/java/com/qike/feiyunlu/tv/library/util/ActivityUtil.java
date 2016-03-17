@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.qike.feiyunlu.tv.presentation.view.AnnounceActivity;
+import com.qike.feiyunlu.tv.presentation.view.LoginActivity;
 import com.qike.feiyunlu.tv.presentation.view.MenuActivity;
+import com.qike.feiyunlu.tv.presentation.view.MessageActivity;
 import com.qike.feiyunlu.tv.presentation.view.OnlineLiveSettingActivity;
 
 /**
@@ -36,6 +38,18 @@ public class ActivityUtil {
 
 	public static void startAnnounceActivity( Context context){
 		context.startActivity(new Intent(context, AnnounceActivity.class));
+	}
+
+	public static  void startMessageActivity(Context context){
+
+		context.startActivity(new Intent(context, MessageActivity.class));
+
+
+	}
+
+
+	public static void startLoginActivity(Context context){
+		context.startActivity(new Intent(context, LoginActivity.class));
 	}
 
 }

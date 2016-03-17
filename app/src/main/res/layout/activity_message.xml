@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.qike.feiyunlu.tv.presentation.view.MessageActivity">
+    tools:context="com.qike.feiyunlu.tv.presentation.view.MessageActivity"
+    android:background="@color/app_backcolor"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <include layout="@layout/titlebar"></include>
+
+
+    <com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="#000000"
+        android:dividerHeight="0dp"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0.0dip"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:listSelector="#00000000"
+        android:scrollbarStyle="insideOverlay"
+        android:background="@color/transparent">
+
+    </com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView>
+
+</LinearLayout>

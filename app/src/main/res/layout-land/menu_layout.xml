@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qike.feiyunlu.tv.presentation.view.widgets.MenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="12dp"
@@ -9,8 +9,6 @@
     android:background="#000000"
     android:id="@+id/back_layout"
     android:clickable="true">
-
-
 
 
     <RelativeLayout
@@ -95,16 +93,45 @@
 
     </RelativeLayout>
 
+
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true">
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        >
+
+
+        <com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView
+            android:id="@+id/chat_menu_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="32dp"
+            android:layout_toStartOf="@+id/up_down"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#000000"
+            android:dividerHeight="0dp"
+            android:fadingEdge="none"
+            android:fadingEdgeLength="0.0dip"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false"
+            android:listSelector="#00000000"
+            android:scrollbarStyle="insideOverlay"
+            android:background="@color/white_5">
+
+        </com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView>
+
 
         <LinearLayout
             android:id="@+id/chat_people"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true">
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            >
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -124,28 +151,31 @@
         <ImageView
             android:id="@+id/share"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
             android:src="@mipmap/share_icon"
-            android:layout_toLeftOf="@+id/chat_people"
-            android:layout_marginRight="30dp"
+            android:layout_toStartOf="@+id/chat_people"
+            android:layout_marginEnd="30dp"
             android:padding="5dp"
             />
         <ImageView
             android:id="@+id/chat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
             android:src="@mipmap/chat_icon"
-            android:layout_toLeftOf="@+id/share"
-            android:layout_marginRight="30dp"
+            android:layout_toStartOf="@+id/share"
+            android:layout_marginEnd="30dp"
             android:padding="5dp"
             />
         <ImageView
             android:id="@+id/edit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
             android:src="@mipmap/edit_icon"
-            android:layout_toLeftOf="@+id/chat"
-            android:layout_marginRight="30dp"
+            android:layout_toStartOf="@+id/chat"
+            android:layout_marginEnd="30dp"
             android:padding="5dp"
             />
 
@@ -154,8 +184,8 @@
             android:layout_width="0.5dp"
             android:layout_height="20dp"
             android:background="#fff"
-            android:layout_toLeftOf="@+id/edit"
-            android:layout_marginRight="15dp"
+            android:layout_toStartOf="@+id/edit"
+            android:layout_marginEnd="15dp"
             android:layout_centerVertical="true"
             />
 
@@ -163,10 +193,12 @@
         <LinearLayout
             android:id="@+id/up_down"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
             android:orientation="horizontal"
-            android:layout_toLeftOf="@+id/line"
-            android:layout_marginRight="15dp">
+            android:layout_toStartOf="@+id/line"
+            android:layout_marginEnd="15dp"
+            >
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -187,4 +219,4 @@
 
     </RelativeLayout>
 
-</com.qike.feiyunlu.tv.presentation.view.widgets.MenuLayout>
+</RelativeLayout>

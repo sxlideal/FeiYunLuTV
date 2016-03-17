@@ -23,7 +23,7 @@ import tv.feiyunlu.qike.com.qikecorelibrary.libs.libs.core.exception.Level;
  * @since 5.0.0
  * @author sunxianhao
  */
-@Config(globalBasePath="$sdcard/7k7kTelecast",publicBasePath="$global/$pkgname/",sign=0)
+@Config(globalBasePath="$sdcard/7k7kFeiYunLu",publicBasePath="$global/$pkgname/",sign=0)
 public class QikeApplication extends Application {
 	private static Application mApp = null;
 	private ExceptionManager mException;

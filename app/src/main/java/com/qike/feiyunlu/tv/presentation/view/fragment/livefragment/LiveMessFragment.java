@@ -43,7 +43,7 @@ public class LiveMessFragment extends BaseFragment {
         mMessageImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ActivityUtil.startMessageActivity(getContext());
             }
         });
         mAnnounceImg.setOnClickListener(new View.OnClickListener() {
