@@ -13,6 +13,6 @@
     <include layout="@layout/layout_stop"
         ></include>
 
-
+    <include layout="@layout/chat_edit_layout"></include>
 
 </RelativeLayout>

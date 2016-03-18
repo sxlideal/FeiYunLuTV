@@ -15,7 +15,18 @@ public class User {
 	
 	@DatabaseField
 	private String user_type;
-	
+
+	@DatabaseField
+	private String mobile;
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
 	@DatabaseField
 	private String nick;
 	

@@ -47,6 +47,8 @@ public class QikeApplication extends Application {
 		startAutoCheckUpdate();
 
 	}
+
+
 	/**
 	 *<p>异常捕获初始化</p><br/>
 	 *<p>处理全局异常未捕获初始化（功能完成后解开注释）</p>

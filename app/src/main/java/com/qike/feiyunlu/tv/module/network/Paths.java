@@ -38,5 +38,8 @@ public class Paths {
 
 	public static final String SYSTEM_INFO = "/api/message/get_sys_msg_list";
 
+	public static final String SOCKET_URL = "http://101.200.128.82:8000/";
+
+
 	
 }

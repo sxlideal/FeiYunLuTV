@@ -40,9 +40,8 @@ public class OnlineLiveSettingActivity extends BaseActivity implements IViewOper
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.online_setting_layout);
-
-        mLiveDto = new LiveScreenDto();
-
+//        mUser = AccountManager.getInstance(getContext()).getUser();
+//        MessSocket.getSocket(mUser.getMobile(), mUser.getUser_id());
         initView();
         initData();
         setListener();
@@ -94,4 +93,9 @@ public class OnlineLiveSettingActivity extends BaseActivity implements IViewOper
         super.onActivityResult(i, i2, intent);
     }
 
+    @Override
+    protected void onStop() {
+//        MessSocket.getSocket(mUser.getMobile(), mUser.getUser_id()).destroySocket();
+        super.onStop();
+    }
 }
