@@ -2,7 +2,9 @@ package com.qike.feiyunlu.tv.presentation.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -11,21 +13,28 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.qike.feiyunlu.tv.R;
+import com.qike.feiyunlu.tv.library.util.ActivityUtil;
 import com.qike.feiyunlu.tv.presentation.model.dto.User;
+import com.qike.feiyunlu.tv.presentation.presenter.Service.FloatService;
 import com.qike.feiyunlu.tv.presentation.presenter.account.AccountManager;
 import com.qike.feiyunlu.tv.presentation.presenter.socket.MessSocket;
 import com.qike.feiyunlu.tv.presentation.view.adapter.MessAdapter;
 import com.qike.feiyunlu.tv.presentation.view.adapter.adapterdto.MessDto;
+import com.qike.feiyunlu.tv.presentation.view.chatview.ChatView;
 import com.qike.feiyunlu.tv.presentation.view.inter.IActivityOperate;
 import com.qike.feiyunlu.tv.presentation.view.widgets.ControllerAnimation;
+import com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.FloatManager;
 import com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView;
+import com.qike.feiyunlu.tv.presentation.view.widgets.cuspopupwindow.PopupWinManager;
 
 public class MenuActivity extends BaseActivity implements IActivityOperate{
 
     private ResultsListView mChatListview;
 
+    private TextView mGameTagTV;
 
     private RelativeLayout backLayout;
     private LinearLayout mStopLayout;
@@ -35,7 +44,10 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
     private ImageButton mStopBtn;
     private ControllerAnimation mAnimControl;
 
+    private ImageView mShieldImage;
     private LinearLayout mUpDownLayout;
+    private ImageView mTriangleImage;
+    private TextView mTriangleText;
     private ResultsListView mListView;
     private MessAdapter messAdapter;
     private RelativeLayout mEditLayout;
@@ -48,12 +60,14 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
 
     private User mUser;
 
+    private ChatView mTwoChatView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         mUser = AccountManager.getInstance(getContext()).getUser();
-        mSocket = MessSocket.getSocket(mUser.getMobile(),mUser.getUser_id());
+        mSocket = MessSocket.getSocket(mUser.getUser_id(),mUser.getUser_id());
 
         initView();
         initData();
@@ -65,13 +79,13 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
     public void initView() {
 
 
-
         mChatListview = (ResultsListView)findViewById(R.id.chat_menu_listview);
-
-//        FloatManager.getINSTANCE(MenuActivity.this).setInVisible();
-
+        mGameTagTV = (TextView) findViewById(R.id.game_tag);
         backLayout = (RelativeLayout)findViewById(R.id.back_layout);
         mUpDownLayout = (LinearLayout)findViewById(R.id.up_down);
+        mTriangleImage = (ImageView)findViewById(R.id.triangle);
+        mTriangleText = (TextView)findViewById(R.id.triangle_text);
+        mShieldImage = (ImageView)findViewById(R.id.chat);
 
         mStopLayout = (LinearLayout)findViewById(R.id.stop);
         mStopLayout.setVisibility(View.GONE);
@@ -90,23 +104,55 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
         mCloseEditImg = (ImageView)findViewById(R.id.close_chat_edit);
         mChatEdit = (EditText)findViewById(R.id.chat_edit);
         mOpenChatEdit = (ImageView)findViewById(R.id.edit);
+
+        mTwoChatView = (ChatView) findViewById(R.id.cus_chat_view);
+        mTwoChatView.setVisibility(View.GONE);
     }
 
     @Override
     public void initData() {
+        String gametag = getIntent().getStringExtra(ActivityUtil.GAME_TAG);
+        mGameTagTV.setText(gametag);
         mAnimControl = new ControllerAnimation(mStopLayout,mArrowLayout );
 
         messAdapter = new MessAdapter(getContext());
-        mListView.setAdapter(messAdapter,getContext());
-
+        mListView.setAdapter(messAdapter, getContext());
+        mListView.setSelection(mListView.getAdapter().getCount() - 1);
         mListView.removeHead();
         mListView.setFooterView(ResultsListView.FOOTER_NOT_DATA);
 
-
     }
 
+    private PopupWinManager popupWinManager;
     @Override
     public void setListener() {
+        popupWinManager = new PopupWinManager(getContext());
+        mShieldImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWinManager.showShield(mShieldImage);
+            }
+        });
+
+        mUpDownLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if( mListView.getVisibility() == View.VISIBLE){
+                    mTriangleImage.setImageResource(R.mipmap.triangle_up);
+                    mTriangleText.setText(R.string.triangle_up);
+                    mListView.setVisibility(View.GONE);
+                    mTwoChatView.setVisibility(View.VISIBLE);
+                }else{
+                    mTriangleImage.setImageResource(R.mipmap.triangle_down);
+                    mTriangleText.setText(R.string.triangle_down);
+                    mListView.setVisibility(View.VISIBLE);
+                    mTwoChatView.setVisibility(View.GONE);
+                }
+
+                mListView.setSelection(mListView.getAdapter().getCount() - 1);
+            }
+        });
+
 
         mSocket.registListener(new MessSocket.OnNewMessageListener() {
             @Override
@@ -115,10 +161,11 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
                 ((Activity)getContext()).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        Log.e("test","onNewMessage");
                         messAdapter.addData(message);
+                        mListView.setSelection(mListView.getAdapter().getCount() - 1);
                     }
                 });
-
             }
         });
 
@@ -132,7 +179,6 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
             }
         });
 
-
         mArrowImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,6 +190,7 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
         mStopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopService(new Intent(getContext(), FloatService.class));
                 finish();
             }
         });
@@ -179,7 +226,7 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
-        if(event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
+        if(event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){
             /*隐藏软键盘*/
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             if(inputMethodManager.isActive()){
@@ -196,17 +243,25 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
             dto.setContent(mChatEdit.getText().toString());
             mSocket.emitMessage(dto);
 
-            mListView.setSelection(mListView.getAdapter().getCount() - 1);
+            Log.e("test","emit message");
+
             return true;
         }
         return super.dispatchKeyEvent(event);
     }
 
+    @Override
+    protected void onResume() {
+
+        FloatManager.getINSTANCE(getContext()).menuActivityCloseShowingWindow();
+        super.onResume();
+    }
+
+
 
     @Override
     protected void onStop() {
-//        FloatManager.getINSTANCE(MenuActivity.this).setVisible();
-
+        FloatManager.getINSTANCE(getContext()).menuAcitivityOpenWindow();
         super.onStop();
     }
 }

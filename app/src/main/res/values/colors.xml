@@ -3,4 +3,32 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <color name="transparent">#00000000</color>
+    <color name="bg_gray">#e1e1e1</color>
+    <color name="mzw_special_choice_describe_color">#555555</color>
+    <color name="mzw_item_selected">#dee6d2</color>
+
+    <color name="share_btn_n">#ff4eb7cd</color>
+    <color name="share_btn_p">#ff418196</color>
+    <color name="start_live_btn_n">#ff55c45f</color>
+    <color name="start_live_btn_p">#ff45875f</color>
+    <color name="stop_live_btn_n">#ffff2a00</color>
+    <color name="stop_live_btn_p">#ff9a3a2f</color>
+
+    <color name="main_bkg_color">#ff5a5a5a</color>
+    <color name="edit_hint_txt_color">#b2ffffff</color>
+    <color name="white_5">#33ffffff</color>
+    <color name="tag_edit_bkg_color">#ff626262</color>
+    <color name="round_corner_bkg_color">#ff626262</color>
+
+    <color name="density_btn_p">#a0ffffff</color>
+    <color name="line_title">#404454</color>
+    <color name="app_backcolor">#2c2f3e</color>
+    <color name="announce_backcolor">#343745</color>
+    <color name="app_linear">#d0d0d0</color>
+    <color name="app_blue">#21aaff</color>
+
+
 </resources>

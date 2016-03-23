@@ -1,48 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:id="@+id/chat_layoutid"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <com.qike.feiyunlu.tv.presentation.view.widgets.CusRelativelayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/back_border">
+        >
 
-        <ImageView
+        <com.qike.feiyunlu.tv.presentation.view.widgets.CusImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/person_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/chat"
+            android:layout_alignBottom="@+id/chat_content_layout"
+            android:layout_alignTop="@+id/chat_content_layout"
+            android:src="@drawable/test"
             android:scaleType="fitStart"
-            android:src="@drawable/test" />
+            app:sriv_left_top_corner_radius="10dip"
+            app:sriv_right_top_corner_radius="0dip"
+            app:sriv_left_bottom_corner_radius="10dip"
+            app:sriv_right_bottom_corner_radius="0dip"
+            app:sriv_border_width="0dip"
+            app:sriv_border_color="#008fea"
+            app:sriv_oval="false"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
 
         <LinearLayout
-            android:id="@+id/chat"
+            android:id="@+id/chat_content_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:background="#fff"
+            android:background="@drawable/chat_back_border"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/chat_user"
                 android:text="用户_2498" />
 
             <TextView
                 android:id="@+id/chat_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="3"
+                style="@style/chat_content"
+
                 android:text="聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容" />
 
 
         </LinearLayout>
 
-    </RelativeLayout>
+
+    </com.qike.feiyunlu.tv.presentation.view.widgets.CusRelativelayout>
 
 
 </LinearLayout>

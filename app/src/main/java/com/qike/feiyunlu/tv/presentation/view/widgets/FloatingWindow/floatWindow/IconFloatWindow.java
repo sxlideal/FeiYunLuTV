@@ -1,7 +1,6 @@
 package com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.floatWindow;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Rect;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.qike.feiyunlu.tv.R;
-import com.qike.feiyunlu.tv.presentation.presenter.Service.FloatService;
 import com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.FloatManager;
 import com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.MFloatWindow;
 
@@ -45,11 +43,11 @@ public class IconFloatWindow extends MFloatWindow {
 
         btn1 = (ImageView) view.findViewById(R.id.btn1);
 
-        FloatManager.getINSTANCE(mContext).closeIconWindow();
         FloatManager.getINSTANCE(mContext).openMenuWindow();
+        FloatManager.getINSTANCE(mContext).closeIconWindow();
 
 
-        mContext.stopService(new Intent(mContext, FloatService.class));
+//        mContext.stopService(new Intent(mContext, FloatService.class));
 
         Log.e("test", "onclick");
         super.onClick(event,view);

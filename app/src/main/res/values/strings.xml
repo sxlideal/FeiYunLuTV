@@ -17,4 +17,73 @@
     <string name="title_activity_tab">TabActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <string name="mzw_pull_refresh">松开手即可刷新</string>
+    <string name="mzw_pull_upload">加载中..</string>
+    <string name="mzw_pull_finally">已经是最后一个</string>
+    <string name="mzw_click_reopen_date">点击重新获取</string>
+    <string name="mzw_let_go_refresh">松开手即可刷新</string>
+    <string name="mzw_already_finish">已经加载完毕- DONE</string>
+    <string name="chat">聊天</string>
+    <string name="privacy_mode">隐私模式</string>
+    <string name="little_pop">？小水泡</string>
+    <string name="triangle_up">展开</string>
+    <string name="triangle_down">收起</string>
+
+
+    <string name="input_live_uri">please input uri</string>
+    <string name="input_live_title">输入直播标题</string>
+    <string name="input_password">输入密码</string>
+    <string name="input_tag_tip">请输入直播标签</string>
+    <string name="input_valide_game_name">请输入游戏名</string>
+    <string name="input_video_title">输入视频标题</string>
+    <string name="select_live_tag">选择直播标签</string>
+    <string name="select_video_category">选择视频所属游戏</string>
+    <string name="server_error">系统错误</string>
+    <string name="share_live">分享</string>
+    <string name="share_to_baidutieba">分享到百度贴吧</string>
+    <string name="split_in">：</string>
+    <string name="start_live">开始直播</string>
+    <string name="chushou_start_live">触手方案开始直播</string>
+    <string name="start_record">使用浮标开始录制</string>
+    <string name="start_record_failed">录制功能开启失败！</string>
+    <string name="start_record_timeout">录制功能开启超时！</string>
+    <string name="start_upload">开始上传</string>
+    <string name="stop">停止</string>
+    <string name="stop_live">停止直播</string>
+    <string name="stop_waiting">暂停中</string>
+    <string name="str_bai_wan">百万</string>
+    <string name="str_buffer_percent">努力缓冲中</string>
+    <string name="str_creating_video">正在生成视频…</string>
+    <string name="normal_density">标清</string>
+    <string name="high_density">高清</string>
+    <string name="horizontal_str">横屏直播</string>
+    <string name="please_connect_network">请连接网络</string>
+    <string name="portrait_str">竖屏直播</string>
+    <string name="super_density">超清</string>
+    <string name="online_live">正在直播</string>
+    <string name="room_id">房间号：</string>
+
+
+    <string name="save_announce">保存</string>
+    <string name="version">版本号：V</string>
+    <string name="save_success">保存成功</string>
+    <string name="live_announce">直播公告</string>
+    <string name="feiyun_assistant">飞云直播小助手</string>
+    <string name="details">详情</string>
+    <string name="system_message">系统消息</string>
+    <string name="live_title">请填写直播标题</string>
+    <string name="live_tag">请选择直播标签</string>
+    <string name="prompt">提示</string>
+    <string name="confirm_exit">确定退出登录</string>
+    <string name="exit">退出</string>
+    <string name="cancle">取消</string>
+    <string name="shield_gift">屏蔽礼物</string>
+    <string name="shield_system">屏蔽系统消息</string>
+    <string name="shield_chat">屏蔽聊天内容</string>
+    <string name="ban_chat">被管理员禁言24小时</string>
+    <string name="ban_confirm">确定</string>
+    <string name="ban_user">禁言</string>
+
 </resources>

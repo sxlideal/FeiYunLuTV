@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
 
             Toast.makeText(this, "Screen recorder is running...", Toast.LENGTH_SHORT).show();
 //            moveTaskToBack(true);
-            ActivityUtil.startMenuActivity(MainActivity.this);
+            ActivityUtil.startMenuActivity(MainActivity.this,"标签");
 
         }else{
             Toast.makeText(this, "cannot record!", Toast.LENGTH_SHORT).show();

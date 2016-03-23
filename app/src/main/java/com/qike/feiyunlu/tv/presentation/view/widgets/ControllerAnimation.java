@@ -94,7 +94,7 @@ public class ControllerAnimation {
 	/*
 	 * 显示下面的控制栏动画	
 	 */
-		public void showControllerDownAnimation(View view){
+		public static void showControllerDownAnimation(View view){
 			
 			TranslateAnimation ta=new TranslateAnimation
 					(android.view.animation.Animation.RELATIVE_TO_SELF

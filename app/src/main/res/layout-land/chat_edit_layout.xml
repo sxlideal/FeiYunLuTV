@@ -16,7 +16,8 @@
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/chat_editback_border"/>
+            android:background="@drawable/chat_editback_border"
+            android:maxLength="100"/>
 
         <ImageView
             android:layout_marginLeft="10dp"

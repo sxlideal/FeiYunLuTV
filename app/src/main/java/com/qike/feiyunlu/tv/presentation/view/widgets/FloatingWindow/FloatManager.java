@@ -31,19 +31,6 @@ public class FloatManager {
 
     }
 
-
-    public void setInVisible(){
-        mIconWindow.setInVisible();
-//        mMenuWindow.setInVisible();
-        mMsgWindow.setInVisible();
-    }
-
-    public void setVisible(){
-        mIconWindow.setVisible();
-        mMsgWindow.setVisible();
-    }
-
-
     private FloatManager(Context context){
 
         mIconWindow = new IconFloatWindow(context);
@@ -52,9 +39,13 @@ public class FloatManager {
 
     }
     public void openMenuWindow(){
-
-        mMenuWindow.show();
+        if( mIconWindow.isShowing()){
+            int[] location = mIconWindow.getLocation();
+            mMenuWindow.initLocation(location[0],location[1]);
+            mMenuWindow.show();
+        }
     }
+
     public void closeMenuWindow(){
         mMenuWindow.close();
     }
@@ -78,16 +69,59 @@ public class FloatManager {
         return mMsgWindow.isShowing();
     }
 
-
     public void closeAllWindows(){
         mMsgWindow.close();
         mIconWindow.close();
         mMenuWindow.close();
     }
 
+    public void showAllWindows(){
+        mMsgWindow.show();
+        mIconWindow.show();
+        mMenuWindow.show();
+    }
+
     public void destroy(){
         closeAllWindows();
         INSTANCE = null;
     }
+
+    private static boolean isIconShow = false;
+    private static boolean isMessShow = false;
+    private static boolean isMenuShow = false;
+    public void menuActivityCloseShowingWindow(){
+
+        if(mIconWindow.isShowing()){
+            isIconShow = true;
+            mIconWindow.close();
+        }
+        if(mMenuWindow.isShowing()){
+            isMenuShow = true;
+            mMenuWindow.close();
+        }
+        if(mMsgWindow.isShowing()){
+            isMessShow = true;
+            mMsgWindow.close();
+        }
+    }
+
+
+    public void menuAcitivityOpenWindow(){
+
+        if( isIconShow ){
+            isIconShow = false;
+            mIconWindow.showAtLastLocation();
+        }
+        if( isMenuShow ){
+            isMenuShow = false;
+            mMenuWindow.showAtLastLocation();
+        }
+        if (isMessShow){
+            isMessShow = false;
+            mMsgWindow.showAtLastLocation();
+        }
+
+    }
+
 
 }

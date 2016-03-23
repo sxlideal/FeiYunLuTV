@@ -31,4 +31,6 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
 
+    compile 'com.joooonho:selectableroundedimageview:1.0.1'
+
 }

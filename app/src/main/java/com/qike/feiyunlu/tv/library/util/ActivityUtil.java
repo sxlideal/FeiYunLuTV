@@ -30,10 +30,12 @@ public class ActivityUtil {
 
 	}
 
+	public static final String GAME_TAG = "game_tag";
+	public static void startMenuActivity( Context context,String gameTag){
 
-	public static void startMenuActivity( Context context){
-
-		context.startActivity(new Intent(context, MenuActivity.class));
+		Intent intent = new Intent(context, MenuActivity.class);
+		intent.putExtra(GAME_TAG,gameTag);
+		context.startActivity(intent);
 	}
 
 	public static void startAnnounceActivity( Context context){

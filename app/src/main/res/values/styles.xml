@@ -11,4 +11,90 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <style name="text_chat">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="text_e5e5e5_15sp">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#e5e5e5</item>
+    </style>
+    <style name="text_fff_15sp">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="anim_menu_topbar">
+        <item name="android:windowEnterAnimation">@anim/menu_topbar_in</item>
+        <item name="android:windowExitAnimation">@anim/menu_topbar_out</item>
+    </style>
+    <style name="ChuShouEditStyle">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">#b1ffffff</item>
+        <item name="android:textColorHint">#b1ffffff</item>
+        <item name="android:background">@drawable/tag_edit_bkg</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="VideoDensityStyle">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">@color/live_density_radiobutton_txt_bkg</item>
+        <item name="android:paddingLeft">15.0dip</item>
+        <item name="android:button">@null</item>
+        <item name="android:minHeight">48.0dip</item>
+        <item name="android:drawableLeft">@drawable/radio_btn_check_icon</item>
+        <item name="android:drawablePadding">5.0dip</item>
+    </style>
+
+
+    <style name="ChatShiledStyle">
+        <item name="android:textSize">13.0sp</item>
+        <item name="android:textColor">#666666</item>
+        <item name="android:paddingLeft">15.0dip</item>
+        <item name="android:paddingRight">15.0dip</item>
+        <item name="android:button">@null</item>
+        <item name="android:minHeight">48.0dip</item>
+        <item name="android:drawableLeft">@drawable/check_btn_check_icon</item>
+        <item name="android:drawablePadding">5.0dip</item>
+    </style>
+
+    <style name="LiveBtnStyle">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">43.0dip</item>
+    </style>
+
+
+    <style name="Theme.Transparent" parent="android:Theme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <style name="MyDialog2" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"></attr>
+        <attr name="border_color" format="color"></attr>
+    </declare-styleable>
+
+    <style name="chat_content">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:maxLines">3</item>
+    </style>
+    <style name="chat_user">
+        <item name="android:textColor">#b6a5c0</item>
+        <item name="android:textSize">11.0sp</item>
+    </style>
 </resources>

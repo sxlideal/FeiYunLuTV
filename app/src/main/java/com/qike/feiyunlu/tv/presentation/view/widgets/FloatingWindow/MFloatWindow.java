@@ -30,6 +30,9 @@ public abstract class MFloatWindow implements FloatWindow {
 
     private boolean isShowing;
 
+    private int[] location = new int[2];
+
+
     public MFloatWindow(Context context) {
 
         mContext = context;
@@ -58,22 +61,10 @@ public abstract class MFloatWindow implements FloatWindow {
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.gravity = Gravity.LEFT | Gravity.TOP;
+
+
         layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
-    }
-
-
-    public void setInVisible(){
-
-        layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
-        mWM.updateViewLayout(mContainerView,layoutParams);
-
-    }
-
-    public void setVisible(){
-
-        layoutParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
-        mWM.updateViewLayout(mContainerView,layoutParams);
     }
 
 
@@ -86,10 +77,31 @@ public abstract class MFloatWindow implements FloatWindow {
         }
     }
 
+    public int[] getLocation(){
+
+        int[] location = new int[2];
+        mContainerView.getLocationOnScreen(location);
+        return location;
+
+    }
+
+    public void showAtLastLocation(){
+        if (!isShowing) {
+            isShowing = true;
+            layoutParams.x = location[0];
+            layoutParams.y= location[1];
+            mWM.addView(mContainerView, layoutParams);
+
+        }
+
+    }
+
+
     @Override
     public void close() {
         if (isShowing) {
             isShowing = false;
+            mContainerView.getLocationOnScreen(location);
             mWM.removeView(mContainerView);
 
         }

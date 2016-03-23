@@ -19,6 +19,10 @@ import io.socket.emitter.Emitter;
 public class MessSocket {
 
 
+    private static boolean isShieldGift = false;
+    private static boolean isShieldSystem = false;
+    private static boolean isShieldContent = false;
+
     private static MessSocket INSTANCE;
     private Socket mSocket;
     private List<OnNewMessageListener> listeners;
@@ -27,6 +31,7 @@ public class MessSocket {
         listeners = new ArrayList<OnNewMessageListener>();
 
         String url = Paths.SOCKET_URL+"?"+"room="+roomid+"&user="+user+"&token=123";
+        Log.e("test",url);
         try{
             mSocket = IO.socket(url);
         }catch (Exception e){
@@ -50,14 +55,62 @@ public class MessSocket {
         }
     }
 
+    public void setShieldMessage( ShieldMessageType shieldMessageType){
 
+        switch (shieldMessageType){
+            case ShieldGift:
+                isShieldGift = true;
+                break;
+            case ShieldSystem:
+                isShieldSystem = true;
+                break;
+            case ShieldContent:
+                isShieldContent = true;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void unShieldMessage( ShieldMessageType shieldMessageType){
+        switch (shieldMessageType){
+            case ShieldGift:
+                isShieldGift = false;
+                break;
+            case ShieldSystem:
+                isShieldSystem = false;
+                break;
+            case ShieldContent:
+                isShieldContent = false;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public boolean getIsShield(){
+        return isShieldContent || isShieldSystem || isShieldGift;
+    }
+
+    public boolean getIsChatShield(){
+        return isShieldContent;
+    }
+    public boolean getIsSystemShield(){
+        return isShieldSystem;
+    }
+    public boolean getIsGiftShield(){
+        return isShieldGift;
+    }
+
+   public enum ShieldMessageType{
+        ShieldGift,ShieldSystem,ShieldContent
+    }
 
     public static MessSocket getSocket(String user, String roomid ){
 
         if( INSTANCE == null ){
             if ( INSTANCE == null){
                 synchronized (MessSocket.class){
-
                     INSTANCE = new MessSocket(user,roomid);
 
                 }
@@ -67,15 +120,25 @@ public class MessSocket {
     }
 
 
-
     private Emitter.Listener onNewMessage = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
+
+
             Object obj = args[0];
             String objStr = String.valueOf(obj);
             MessDto message = JSON.parseObject(objStr, MessDto.class);
-            for (OnNewMessageListener listener:listeners) {
-                listener.OnNewMessage(message);
+
+            if (isShieldContent && message.getType() == MessDto.NORMAL){
+                return;
+            }else if(isShieldGift && message.getType() == MessDto.GIFT ){
+                return;
+            }else if (isShieldSystem && message.getType() == MessDto.BAN){
+                return;
+            }else {
+                for (OnNewMessageListener listener:listeners) {
+                    listener.OnNewMessage(message);
+                }
             }
         }
     };
@@ -110,13 +173,15 @@ public class MessSocket {
     private Emitter.Listener onConnect = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
-            Log.i(MessSocket.class.getName(),"socket connect");
+            Log.e("test", "connected");
         }
     };
 
     private Emitter.Listener onConnectError = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
+
+            Log.e("test","connect error");
             reconnect();
         }
     };
@@ -124,6 +189,7 @@ public class MessSocket {
     private Emitter.Listener onDisconnect = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
+            Log.e("test","disconnect");
             reconnect();
         }
     };
@@ -131,6 +197,7 @@ public class MessSocket {
     private Emitter.Listener onError = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
+            Log.e("test","onerror");
             reconnect();
         }
     };

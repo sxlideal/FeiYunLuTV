@@ -110,7 +110,7 @@ public class LiveFragment extends BaseFragment {
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                LiveUtil.startRecord(1,getContext(),mLiveDto);
+                LiveUtil.startRecord(1,getContext(),mLiveDto);
 
 
                 String roomName = mLiveTitleEdit.getText().toString();
@@ -142,7 +142,7 @@ public class LiveFragment extends BaseFragment {
                     }
                 });
 
-                ActivityUtil.startMenuActivity(getContext());
+                ActivityUtil.startMenuActivity(getContext(),gameName);
             }
 
         });

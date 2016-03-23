@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.qike.feiyunlu.tv.R;
+import com.qike.feiyunlu.tv.presentation.view.adapter.adapterdto.MessDto;
 
 
 public class CusDialogManager {
@@ -24,7 +25,40 @@ public class CusDialogManager {
 		
 		
 	}
-	
+
+	public void showBanDialog( MessDto dto){
+		mDialog = new Dialog(mContext, R.style.MyDialog2);
+		View view = mInflater.inflate(R.layout.dialog_ban, null);
+
+		TextView cancleText = (TextView) view.findViewById(R.id.ban_cancle);
+		TextView banConfirmText = (TextView) view.findViewById(R.id.ban_confirm);
+		TextView banContentText = (TextView) view.findViewById(R.id.ban_content);
+
+		banContentText.setText(dto.getContent());
+
+		cancleText.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dismissDialog();
+			}
+		});
+
+		banConfirmText.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dismissDialog();
+
+
+			}
+		});
+
+		mDialog.setContentView(view);
+		mDialog.show();
+
+
+	}
+
+
 	public void showExitDialog( OnClickListener onClickListener ){
 		
 		mDialog = new Dialog(mContext, R.style.MyDialog2);
