@@ -142,7 +142,7 @@ public class LiveFragment extends BaseFragment {
                     }
                 });
 
-                ActivityUtil.startMenuActivity(getContext(),gameName);
+//                ActivityUtil.startMenuActivity(getContext(),gameName);
             }
 
         });

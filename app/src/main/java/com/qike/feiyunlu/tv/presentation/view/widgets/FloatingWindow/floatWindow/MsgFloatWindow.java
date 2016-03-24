@@ -8,14 +8,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.qike.feiyunlu.tv.R;
-import com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.MFloatWindow;
+import com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.MsgParentFloatWindow;
 import com.qike.feiyunlu.tv.presentation.view.widgets.ResultsListView;
 
 
 /**
  * Created by cherish on 2016/2/24.
  */
-public class MsgFloatWindow  extends MFloatWindow {
+public class MsgFloatWindow  extends MsgParentFloatWindow {
 
 
     private boolean isExpand = false;//默认开始时不展开
@@ -29,6 +29,7 @@ public class MsgFloatWindow  extends MFloatWindow {
 
     public MsgFloatWindow( Context context){
         super(context);
+
     }
     @Override
     protected View getContentView() {
@@ -54,6 +55,9 @@ public class MsgFloatWindow  extends MFloatWindow {
 
         return view;
     }
+
+
+
 
 
     @Override

@@ -31,4 +31,6 @@
     <color name="app_blue">#21aaff</color>
 
 
+    <color name="float_back_color">#444444</color>
+
 </resources>

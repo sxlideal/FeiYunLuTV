@@ -190,8 +190,9 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
         mStopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stopService(new Intent(getContext(), FloatService.class));
-                finish();
+//                stopService(new Intent(getContext(), FloatService.class));
+//                finish();
+                getContext().stopService(new Intent(getContext(), FloatService.class));
             }
         });
 

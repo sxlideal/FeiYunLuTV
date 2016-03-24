@@ -49,6 +49,16 @@ public class FloatManager {
     public void closeMenuWindow(){
         mMenuWindow.close();
     }
+
+    public void openIconAtLoctionWindow(){
+        if( mMenuWindow.isShowing()){
+            int[] location = mMenuWindow.getLocation();
+            mIconWindow.initLocation(location[0],location[1]);
+            mIconWindow.show();
+        }
+    }
+
+
     public void openIconWindow(){
         mIconWindow.show();
     }

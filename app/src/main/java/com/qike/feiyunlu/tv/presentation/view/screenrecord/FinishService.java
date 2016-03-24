@@ -16,7 +16,6 @@ public class FinishService extends Activity {
 		super.onCreate(savedInstanceState);
         Log.i("FinishService", " chh stop it now");
 		stopServices();
-		
 
 		finish();
         //TODO wait for rtmp sender finish

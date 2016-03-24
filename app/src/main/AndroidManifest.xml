@@ -51,7 +51,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".presentation.view.MenuActivity"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+            android:launchMode="singleTop">
         </activity>
         <activity android:name=".WindowActivity" >
         </activity>
