@@ -62,12 +62,16 @@ public class MenuActivity extends BaseActivity implements IActivityOperate{
 
     private ChatView mTwoChatView;
 
+    public static Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         mUser = AccountManager.getInstance(getContext()).getUser();
         mSocket = MessSocket.getSocket(mUser.getUser_id(),mUser.getUser_id());
+
+        activity = this;
 
         initView();
         initData();

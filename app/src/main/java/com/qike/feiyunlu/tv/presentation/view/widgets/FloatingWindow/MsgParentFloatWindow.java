@@ -1,6 +1,7 @@
 package com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow;
 
 import android.content.Context;
+import android.graphics.PixelFormat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -60,18 +61,24 @@ public abstract class MsgParentFloatWindow implements FloatWindow {
     }
 
 
-
-
     public void initParams() {
         layoutParams = new WindowManager.LayoutParams();
-        layoutParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        layoutParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        int height,width;
+        if(mWM.getDefaultDisplay().getHeight() > mWM.getDefaultDisplay().getWidth() ){
+            height = mWM.getDefaultDisplay().getHeight();
+            width = mWM.getDefaultDisplay().getWidth();
+        }else {
+            height = mWM.getDefaultDisplay().getWidth();
+            width = mWM.getDefaultDisplay().getHeight();
+        }
+
+        layoutParams.height = height/2>width ? width : height/2;
+        layoutParams.width = (int)(width * 0.9f);
         layoutParams.gravity = Gravity.LEFT | Gravity.TOP;
 
-
         layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
-
+        layoutParams.format = PixelFormat.RGBA_8888;
     }
 
 

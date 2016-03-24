@@ -12,7 +12,10 @@
         android:padding="5dp"
         android:src="@drawable/float_logo"
         android:background="@drawable/float_left_corner_back"/>
-
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="50dp"
+        android:background="#000000"/>
 
     <ImageView
         android:id="@+id/float_home"

@@ -1,4 +1,4 @@
-package com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow;
+package com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.inter;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
@@ -10,14 +10,12 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.qike.feiyunlu.tv.R;
-import com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.inter.FloatWindow;
-import com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.inter.IMoveListener;
 
 
 /**
  * Created by cherish on 2016/2/22.
  */
-public abstract class MFloatWindow implements FloatWindow {
+public abstract class MsgTitleParentFloatWindow implements FloatWindow {
 
     public Context mContext;
 
@@ -34,7 +32,7 @@ public abstract class MFloatWindow implements FloatWindow {
     private int[] location = new int[2];
 
 
-    public MFloatWindow(Context context) {
+    public MsgTitleParentFloatWindow(Context context) {
 
         mContext = context;
         mWM = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
@@ -61,23 +59,26 @@ public abstract class MFloatWindow implements FloatWindow {
     }
 
 
-
-
     public void initParams() {
         layoutParams = new WindowManager.LayoutParams();
-        layoutParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        layoutParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 
-//        layoutParams.flags =   WindowManager.LayoutParams.TYPE_SYSTEM_ERROR|
-//        WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL  | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
 
+        int height,width;
+        if(mWM.getDefaultDisplay().getHeight() > mWM.getDefaultDisplay().getWidth() ){
+            height = mWM.getDefaultDisplay().getHeight();
+            width = mWM.getDefaultDisplay().getWidth();
+        }else {
+            height = mWM.getDefaultDisplay().getWidth();
+            width = mWM.getDefaultDisplay().getHeight();
+        }
+
+        layoutParams.width = (int)(width * 0.9f);
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.gravity = Gravity.LEFT | Gravity.TOP;
 
-        layoutParams.format = PixelFormat.RGBA_8888;
-
         layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
-
+        layoutParams.format = PixelFormat.RGBA_8888;
     }
 
 
@@ -94,15 +95,6 @@ public abstract class MFloatWindow implements FloatWindow {
 
         int[] location = new int[2];
         mContainerView.getLocationOnScreen(location);
-
-        int leftDimen = location[0];
-        int rightDimen =mWM.getDefaultDisplay().getWidth()- ( location[0]+mContainerView.getRight());
-
-        if (leftDimen > rightDimen){
-            location[0] =mWM.getDefaultDisplay().getWidth();
-        }else{
-            location[0] = 0;
-        }
         return location;
 
     }
@@ -235,13 +227,13 @@ public abstract class MFloatWindow implements FloatWindow {
 //                        }
 //                    } else {
                         //靠近x�?
-                        if (x > width / 2) {
-                            //右边
-                            layoutParams.x = width;
-                        } else {
-                            //坐标
-                            layoutParams.x = 0;
-                        }
+//                        if (x > width / 2) {
+//                            //右边
+//                            layoutParams.x = width;
+//                        } else {
+//                            //坐标
+//                            layoutParams.x = 0;
+//                        }
 //                    }
                     if(mContainerView != null && isShowing ){
                         mWM.updateViewLayout(mContainerView, layoutParams);

@@ -37,6 +37,8 @@ public class FloatService extends Service {
     private Object[] mStopForegroundArgs = new Object[1];
 
 
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -60,7 +62,7 @@ public class FloatService extends Service {
 
 
         FloatManager.getINSTANCE(this).openIconWindow();
-        FloatManager.getINSTANCE(this).openMsgWindow();
+        FloatManager.getINSTANCE(this).openMsgTitleWindow();
     }
 
     @Override
@@ -74,8 +76,8 @@ public class FloatService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Log.i(FloatService.class.getName(), "chh onStartCommand flags " + flags + " startId " + startId);
 
+        Log.i(FloatService.class.getName(), "chh onStartCommand flags " + flags + " startId " + startId);
 
         try {
             if (startId == 1 || flags == 1) {

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp" android:layout_height="wrap_content"
+    android:background="@color/float_back_color"
+    android:orientation="vertical">
+
+    
+    <RelativeLayout
+        android:id="@+id/float_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/chat_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/people_mun"
+            android:text="@string/chat"
+            style="@style/text_chat"
+            android:layout_centerVertical="true"/>
+
+        <LinearLayout
+            android:id="@+id/people_mun"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/chat_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text_chat"
+                android:text="136人"
+                android:layout_gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/spread"/>
+
+            <ImageView
+                android:id="@+id/spread"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/up_triangle"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
