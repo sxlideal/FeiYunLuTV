@@ -16,6 +16,21 @@ public class MessagePresenter {
 
     }
 
+    public void banUser(String masterUid,String audienceUid,String roomId, final BaseCallbackPresenter callback ){
+
+        mBiz.banUser(masterUid, audienceUid, roomId, new BaseCallbackBiz() {
+            @Override
+            public void dataResult(Object obj) {
+                callback.callbackResult(obj);
+            }
+
+            @Override
+            public void errerResult(int code, String msg) {
+                callback.onErrer( code, msg);
+            }
+        });
+
+    }
 
     public void getMessage( String userid , final BaseCallbackPresenter callbackPresenter){
 

@@ -23,10 +23,31 @@ public class MessageBiz {
 
     }
 
-    public void banUser(){
+    public void banUser( String masterUid,String audienceUid,String roomId, final BaseCallbackBiz callbackBiz){
 
-//        banDao = new BazaarGetDao<String>(Paths.BASEPATH+)
+        banDao = new BazaarGetDao<String>(Paths.BASEPATH+Paths.BAN_URL,String.class,BazaarGetDao.ARRAY_DATA);
 
+        banDao.putParams( "master_uid",masterUid);
+        banDao.putParams( "audience_uid",audienceUid);
+        banDao.putParams( "room_id",roomId);
+        banDao.setNoCache();
+
+        banDao.registerListener(new BaseLoadListener(){
+            @Override
+            public void onError(Result result) {
+
+                if (callbackBiz != null) {
+                    callbackBiz.errerResult(result.getCode(),result.getErrmsg());
+                }
+            }
+
+            @Override
+            public void onComplete(IDao.ResultType resultType) {
+                if( callbackBiz != null ){
+                    callbackBiz.dataResult(mDao.getmData());
+                }
+            }
+        });
     }
 
 
