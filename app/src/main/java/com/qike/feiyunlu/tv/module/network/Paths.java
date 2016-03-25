@@ -41,5 +41,7 @@ public class Paths {
 	public static final String SOCKET_URL = "http://101.200.128.82:8000/";
 
 
+	public static final String BAN_URL = "";
+
 	
 }

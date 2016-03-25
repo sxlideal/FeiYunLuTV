@@ -16,10 +16,20 @@ public class MessageBiz {
 
     private BazaarGetDao<User> mDao;
 
+    private BazaarGetDao<String> banDao;
+
     public MessageBiz(){
         mDao = new BazaarGetDao<User>(Paths.BASEPATH + Paths.SYSTEM_INFO, User.class, BazaarGetDao.ARRAY_DATA );
 
     }
+
+    public void banUser(){
+
+//        banDao = new BazaarGetDao<String>(Paths.BASEPATH+)
+
+    }
+
+
 
 
     public void getMessage( String userid , final BaseCallbackBiz callbackBiz){
