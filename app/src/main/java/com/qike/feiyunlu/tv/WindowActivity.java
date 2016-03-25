@@ -12,7 +12,7 @@ public class WindowActivity extends AppCompatActivity {
 
 
     
-
+//dddfff
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
