@@ -3,8 +3,15 @@ package com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.floatWindo
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.qike.feiyunlu.tv.R;
+import com.qike.feiyunlu.tv.presentation.model.dto.User;
+import com.qike.feiyunlu.tv.presentation.presenter.account.AccountManager;
+import com.qike.feiyunlu.tv.presentation.presenter.socket.MessSocket;
+import com.qike.feiyunlu.tv.presentation.view.MenuActivity;
+import com.qike.feiyunlu.tv.presentation.view.adapter.adapterdto.MessDto;
 import com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.FloatManager;
 import com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.inter.MsgTitleParentFloatWindow;
 
@@ -13,6 +20,12 @@ import com.qike.feiyunlu.tv.presentation.view.widgets.FloatingWindow.inter.MsgTi
  */
 public class MessageTitleWindow  extends MsgTitleParentFloatWindow{
 
+
+    private RelativeLayout mChatLayout;
+
+    private User mUser;
+
+    private MessSocket messSocket;
 
     public MessageTitleWindow(Context context) {
         super(context);
@@ -23,76 +36,72 @@ public class MessageTitleWindow  extends MsgTitleParentFloatWindow{
 
         View view = mInflater.inflate(R.layout.float_window_msg_title,null);
 
+        mChatLayout = (RelativeLayout) view.findViewById(R.id.chat_text_layout);
+
+
+        mUser = AccountManager.getInstance(mContext).getUser();
+        messSocket = MessSocket.getSocket(mUser.getUser_id(), mUser.getUser_id());
+
+        messSocket.registListener(new MessSocket.OnNewMessageListener() {
+            @Override
+            public void OnNewMessage(final MessDto message) {
+
+                MenuActivity.activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        addView(message);
+                    }
+                });
+            }
+        });
 
         return view;
 
     }
 
 
-//    private void addNormalView( final MessDto dto){
-//        layoutNormal = (LinearLayout) mInfalter.inflate(R.layout.item_chat, null);
-//
-//        CusImageView personIcon = (CusImageView)layoutNormal.findViewById(R.id.person_icon);
-//        TextView userName = (TextView)layoutNormal.findViewById(R.id.username);
-//        TextView content = (TextView)layoutNormal.findViewById(R.id.chat_content);
-//        LinearLayout chatLayout = (LinearLayout) layoutNormal.findViewById(R.id.chat_layoutid);
-//
-//        if( dto.getType() == MessDto.NORMAL){
-//
-//            ImageLoader.getBitmap(personIcon, dto.getUser_avatar());
-//            userName.setText(dto.getUser_nick());
-//            content.setText(dto.getContent());
-//            chatLayout.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-////                        Toast.makeText(mContext,"禁言",0).show();
-//                    CusDialogManager dm = new CusDialogManager(getContext());
-//                    dm.showBanDialog(dto);
-//                }
-//            });
-//
-//        }else if( dto.getType() == MessDto.GIFT){
-//            ImageLoader.getBitmap(personIcon, mUser.getAvatar());
-//            userName.setText("@" + mUser.getNick());
-//            content.setText("送给主播一个礼物");
-//            chatLayout.setOnClickListener(null);
-//
-//        }else if( dto.getType() == MessDto.BAN){//系统禁言消息
-//            personIcon.setBackgroundResource(R.drawable.chat_ban_back_border);
-//            personIcon.setImageResource(R.drawable.chat_ban_icon);
-//            userName.setText("@" + getContext().getResources().getString(R.string.system_message));
-//            content.setText(dto.getTarget_uid() + getContext().getResources().getString(R.string.ban_chat));
-//            chatLayout.setOnClickListener(null);
-//        }
-//
-//        if (getChildCount()==2){
-//            removeViewAt(0);
-//        }
-//
-//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//        params.setMargins(0,20,0,0);
-//        layoutNormal.setLayoutParams(params);
-//        addView(layoutNormal);
-//        ControllerAnimation.showControllerDownAnimation(layoutNormal);
-//    }
-//
-//    private void addAnchorView( MessDto dto ){
-//        layoutAnchor = (LinearLayout) mInfalter.inflate(R.layout.item_anchor_chat,null);
-//
-//        if( dto.getType() == MessDto.NORMAL){
-//            TextView content = (TextView)layoutAnchor.findViewById(R.id.chat_content);
-//            content.setText(dto.getContent());
-//        }
-//
-//        if (getChildCount()==2){
-//            removeViewAt(0);
-//        }
-//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//        params.setMargins(0,20,0,0);
-//        layoutAnchor.setLayoutParams(params);
-//        addView( layoutAnchor );
-//        ControllerAnimation.showControllerDownAnimation(layoutAnchor);
-//    }
+    public void addView(MessDto dto){
+
+        int type = dto.getType();
+
+        View convertView = null;
+
+        if (type == MessDto.NORMAL && dto.getUser_id().equals(mUser.getUser_id())) {
+
+            convertView = mInflater.inflate(R.layout.float_msg_anchor, null);
+            TextView content = (TextView) convertView.findViewById(R.id.anchor_chat);
+            content.setText(dto.getContent());
+
+        } else if (type == MessDto.NORMAL || type == MessDto.GIFT) {
+
+            convertView = mInflater.inflate(R.layout.float_msg_item, null);
+            TextView content = (TextView) convertView.findViewById(R.id.user_chat);
+            TextView username = (TextView) convertView.findViewById(R.id.username);
+
+            if (type == MessDto.GIFT){
+                username.setText(dto.getUser_nick());
+                content.setText("送给主播礼物");
+            }else {
+                username.setText(dto.getUser_nick());
+                content.setText(dto.getContent());
+            }
+
+
+        } else if (type == MessDto.BAN) {
+
+            convertView = mInflater.inflate(R.layout.float_message_item_ban, null);
+            TextView content = (TextView) convertView.findViewById(R.id.content);
+            content.setText("禁言");
+        }
+
+        RelativeLayout.LayoutParams params =
+                new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        mChatLayout.removeViewAt(0);
+        mChatLayout.addView(convertView,0);
+
+    }
 
 
 

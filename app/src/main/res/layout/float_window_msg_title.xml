@@ -12,14 +12,22 @@
         android:orientation="horizontal"
         >
 
-        <TextView
-            android:id="@+id/chat_text"
+        <RelativeLayout
+            android:id="@+id/chat_text_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_toLeftOf="@+id/people_mun"
-            android:text="@string/chat"
-            style="@style/text_chat"
-            android:layout_centerVertical="true"/>
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/chat_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chat"
+               />
+
+        </RelativeLayout>
+
 
         <LinearLayout
             android:id="@+id/people_mun"
