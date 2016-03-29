@@ -6,19 +6,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qike.feiyunlu.tv.R;
-import com.qike.feiyunlu.tv.library.util.ActivityUtil;
 import com.qike.feiyunlu.tv.module.network.DLResultData;
 import com.qike.feiyunlu.tv.presentation.model.dto.User;
 import com.qike.feiyunlu.tv.presentation.presenter.BaseCallbackPresenter;
 import com.qike.feiyunlu.tv.presentation.presenter.account.AccountManager;
 import com.qike.feiyunlu.tv.presentation.presenter.room.RoomPresenter;
 import com.qike.feiyunlu.tv.presentation.view.OnlineLiveSettingActivity;
+import com.qike.feiyunlu.tv.presentation.view.adapter.GameBaseAdapter;
 import com.qike.feiyunlu.tv.presentation.view.fragment.BaseFragment;
 import com.qike.feiyunlu.tv.presentation.view.screenrecord.LiveScreenDto;
 import com.qike.feiyunlu.tv.presentation.view.screenrecord.LiveUtil;
@@ -62,24 +63,29 @@ public class LiveFragment extends BaseFragment {
 
     private void initDrawerLayout() {
 
-        final TextView text1 = (TextView) getActivity().findViewById(R.id.text1);
-        final TextView text2 = (TextView) getActivity().findViewById(R.id.text2);
-        text1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDrawerLayout.closeDrawer(GravityCompat.END);
-                mTagText.setText(text1.getText().toString());
-            }
-        });
+       final GridView mGridView=(GridView)getActivity().findViewById(R.id.gridview);
 
-        text2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDrawerLayout.closeDrawer(GravityCompat.END);
-                mTagText.setText(text2.getText().toString());
-            }
-        });
+
+        mGridView.setAdapter(new GameBaseAdapter(getActivity()));
+//        final TextView text1 = (TextView) getActivity().findViewById(R.id.text1);
+//        final TextView text2 = (TextView) getActivity().findViewById(R.id.text2);
+//        text1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mDrawerLayout.closeDrawer(GravityCompat.END);
+//                mTagText.setText(text1.getText().toString());
+//            }
+//        });
+//
+//        text2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mDrawerLayout.closeDrawer(GravityCompat.END);
+//                mTagText.setText(text2.getText().toString());
+//            }
+//        });
     }
+
 
     public void initActivityView() {
         initDrawerLayout();
@@ -116,11 +122,11 @@ public class LiveFragment extends BaseFragment {
                 String roomName = mLiveTitleEdit.getText().toString();
                 String gameName = mTagText.getText().toString();
                 if ( roomName == null || roomName.equals("")){
-                    Toast.makeText(getContext(), R.string.live_title, 0).show();
+                    Toast.makeText(getContext(), R.string.live_title, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (gameName == null || gameName.equals("")){
-                    Toast.makeText(getContext(),R.string.live_tag,0).show();
+                    Toast.makeText(getContext(),R.string.live_tag,Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -130,14 +136,14 @@ public class LiveFragment extends BaseFragment {
                     @Override
                     public boolean callbackResult(Object obj) {
 
-                        Toast.makeText(getContext(),"保存成功",0).show();
+                        Toast.makeText(getContext(),"保存成功",Toast.LENGTH_SHORT).show();
 
                         return false;
                     }
 
                     @Override
                     public void onErrer(int code, String msg) {
-                        Toast.makeText(getContext(),"保存失败",0).show();
+                        Toast.makeText(getContext(),"保存失败",Toast.LENGTH_SHORT).show();
 
                     }
                 });

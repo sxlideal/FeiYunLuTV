@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.qike.feiyunlu.tv.R;
@@ -19,8 +20,8 @@ import com.qike.feiyunlu.tv.presentation.presenter.account.AccountManager;
 public class LoginActivity extends BaseActivity implements IViewOperater{
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
-    private AutoCompleteTextView mPasswordView;
+    private EditText mEmailView;
+    private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
 
@@ -42,8 +43,8 @@ public class LoginActivity extends BaseActivity implements IViewOperater{
 
     @Override
     public void initView() {
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        mPasswordView = (AutoCompleteTextView) findViewById(R.id.password);
+        mEmailView = (EditText) findViewById(R.id.email);
+        mPasswordView = (EditText) findViewById(R.id.password);
         mLoginButton = (Button) findViewById(R.id.email_sign_in_button);
     }
 
@@ -62,7 +63,7 @@ public class LoginActivity extends BaseActivity implements IViewOperater{
                 String mPassStr = mPasswordView.getText().toString();
 
                 if (TextUtils.isEmpty(emailStr) || TextUtils.isEmpty(mPassStr)) {
-                    Toast.makeText(LoginActivity.this, "请填写用户名和密码！", 0).show();
+                    Toast.makeText(LoginActivity.this, "请填写用户名和密码！", Toast.LENGTH_SHORT).show();
                 } else {
                     AccountManager.getInstance(LoginActivity.this).login(emailStr, mPassStr, loginCallback);
                 }

@@ -70,23 +70,23 @@ public class OnlineLiveSettingActivity extends BaseActivity implements IViewOper
 
     private void initDrawerLayout() {
 
-        final TextView text1 = (TextView) findViewById(R.id.text1);
-        final TextView text2 = (TextView) findViewById(R.id.text2);
-        text1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDrawerLayout.closeDrawer(GravityCompat.END);
-                mTagText.setText(text1.getText().toString());
-            }
-        });
-
-        text2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDrawerLayout.closeDrawer(GravityCompat.END);
-                mTagText.setText(text2.getText().toString());
-            }
-        });
+//        final TextView text1 = (TextView) findViewById(R.id.text1);
+//        final TextView text2 = (TextView) findViewById(R.id.text2);
+//        text1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mDrawerLayout.closeDrawer(GravityCompat.END);
+//                mTagText.setText(text1.getText().toString());
+//            }
+//        });
+//
+//        text2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mDrawerLayout.closeDrawer(GravityCompat.END);
+//                mTagText.setText(text2.getText().toString());
+//            }
+//        });
     }
 
     public void onActivityResult(int i, int i2, Intent intent) {
